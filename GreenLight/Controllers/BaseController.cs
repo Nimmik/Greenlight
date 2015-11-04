@@ -16,7 +16,7 @@ namespace GreenLight.Controllers
 
         public BaseController()
         {
-            unitOfWork = new UnitOfWork(new DefaultContext());
+            unitOfWork = new UnitOfWork(new ApplicationDbContext());
         }
     }
 }
