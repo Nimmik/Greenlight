@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Greenlight.Models.Post>
+
+@{
+    ViewBag.Title = "Post";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>This is Post Page</p>
+<div>
+    @foreach (var p in Model)
+    {
+        <div></div>
+    }
+</div>
