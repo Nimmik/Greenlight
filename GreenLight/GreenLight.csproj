@@ -188,26 +188,113 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap\bootstrap.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\bootstrap\bootstrap.min.css">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Site.css">
+      <DependentUpon>Site.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\css\bootstrap\.csscomb.json" />
+    <Content Include="Content\css\bootstrap\.csslintrc" />
+    <Content Include="Content\css\bootstrap\alerts.less" />
+    <Content Include="Content\css\bootstrap\badges.less" />
+    <Content Include="Content\css\bootstrap\bootstrap.less" />
+    <Content Include="Content\css\bootstrap\breadcrumbs.less" />
+    <Content Include="Content\css\bootstrap\button-groups.less" />
+    <Content Include="Content\css\bootstrap\buttons.less" />
+    <Content Include="Content\css\bootstrap\carousel.less" />
+    <Content Include="Content\css\bootstrap\close.less" />
+    <Content Include="Content\css\bootstrap\code.less" />
+    <Content Include="Content\css\bootstrap\component-animations.less" />
+    <Content Include="Content\css\bootstrap\dropdowns.less" />
+    <Content Include="Content\css\bootstrap\forms.less" />
+    <Content Include="Content\css\bootstrap\glyphicons.less" />
+    <Content Include="Content\css\bootstrap\grid.less" />
+    <Content Include="Content\css\bootstrap\input-groups.less" />
+    <Content Include="Content\css\bootstrap\jumbotron.less" />
+    <Content Include="Content\css\bootstrap\labels.less" />
+    <Content Include="Content\css\bootstrap\list-group.less" />
+    <Content Include="Content\css\bootstrap\media.less" />
+    <Content Include="Content\css\bootstrap\mixins.less" />
+    <Content Include="Content\css\bootstrap\mixins\alerts.less" />
+    <Content Include="Content\css\bootstrap\mixins\background-variant.less" />
+    <Content Include="Content\css\bootstrap\mixins\border-radius.less" />
+    <Content Include="Content\css\bootstrap\mixins\buttons.less" />
+    <Content Include="Content\css\bootstrap\mixins\center-block.less" />
+    <Content Include="Content\css\bootstrap\mixins\clearfix.less" />
+    <Content Include="Content\css\bootstrap\mixins\forms.less" />
+    <Content Include="Content\css\bootstrap\mixins\gradients.less" />
+    <Content Include="Content\css\bootstrap\mixins\grid-framework.less" />
+    <Content Include="Content\css\bootstrap\mixins\grid.less" />
+    <Content Include="Content\css\bootstrap\mixins\hide-text.less" />
+    <Content Include="Content\css\bootstrap\mixins\image.less" />
+    <Content Include="Content\css\bootstrap\mixins\labels.less" />
+    <Content Include="Content\css\bootstrap\mixins\list-group.less" />
+    <Content Include="Content\css\bootstrap\mixins\nav-divider.less" />
+    <Content Include="Content\css\bootstrap\mixins\nav-vertical-align.less" />
+    <Content Include="Content\css\bootstrap\mixins\opacity.less" />
+    <Content Include="Content\css\bootstrap\mixins\pagination.less" />
+    <Content Include="Content\css\bootstrap\mixins\panels.less" />
+    <Content Include="Content\css\bootstrap\mixins\progress-bar.less" />
+    <Content Include="Content\css\bootstrap\mixins\reset-filter.less" />
+    <Content Include="Content\css\bootstrap\mixins\reset-text.less" />
+    <Content Include="Content\css\bootstrap\mixins\resize.less" />
+    <Content Include="Content\css\bootstrap\mixins\responsive-visibility.less" />
+    <Content Include="Content\css\bootstrap\mixins\size.less" />
+    <Content Include="Content\css\bootstrap\mixins\tab-focus.less" />
+    <Content Include="Content\css\bootstrap\mixins\table-row.less" />
+    <Content Include="Content\css\bootstrap\mixins\text-emphasis.less" />
+    <Content Include="Content\css\bootstrap\mixins\text-overflow.less" />
+    <Content Include="Content\css\bootstrap\mixins\vendor-prefixes.less" />
+    <Content Include="Content\css\bootstrap\modals.less" />
+    <Content Include="Content\css\bootstrap\navbar.less" />
+    <Content Include="Content\css\bootstrap\navs.less" />
+    <Content Include="Content\css\bootstrap\normalize.less" />
+    <Content Include="Content\css\bootstrap\pager.less" />
+    <Content Include="Content\css\bootstrap\pagination.less" />
+    <Content Include="Content\css\bootstrap\panels.less" />
+    <Content Include="Content\css\bootstrap\popovers.less" />
+    <Content Include="Content\css\bootstrap\print.less" />
+    <Content Include="Content\css\bootstrap\progress-bars.less" />
+    <Content Include="Content\css\bootstrap\responsive-embed.less" />
+    <Content Include="Content\css\bootstrap\responsive-utilities.less" />
+    <Content Include="Content\css\bootstrap\scaffolding.less" />
+    <Content Include="Content\css\bootstrap\tables.less" />
+    <Content Include="Content\css\bootstrap\theme.less" />
+    <Content Include="Content\css\bootstrap\thumbnails.less" />
+    <Content Include="Content\css\bootstrap\tooltip.less" />
+    <Content Include="Content\css\bootstrap\type.less" />
+    <Content Include="Content\css\bootstrap\utilities.less" />
+    <Content Include="Content\css\bootstrap\variables.less" />
+    <Content Include="Content\css\bootstrap\wells.less" />
+    <None Include="compilerconfig.json" />
+    <Content Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Site.less" />
+    <None Include="Content\js\jquery-1.10.2.intellisense.js" />
+    <Content Include="Content\js\jquery-1.10.2.js" />
+    <Content Include="Content\js\jquery-1.10.2.min.js" />
+    <None Include="Content\js\jquery.validate-vsdoc.js" />
+    <Content Include="Content\js\jquery.validate.js" />
+    <Content Include="Content\js\jquery.validate.min.js" />
+    <Content Include="Content\js\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\js\modernizr-2.6.2.js" />
+    <Content Include="Content\js\respond.js" />
+    <Content Include="Content\js\respond.min.js" />
+    <Content Include="Content\js\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -244,15 +331,15 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\App_Data\" />
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Content\js\jquery-1.10.2.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
