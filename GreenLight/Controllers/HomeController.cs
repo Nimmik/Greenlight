@@ -1,8 +1,13 @@
-﻿using System;
+﻿using Greenlight.Models;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using JBWebappLibrary.Repository;
+using Microsoft.AspNet.Identity;
 
 namespace GreenLight.Controllers
 {
@@ -13,14 +18,14 @@ namespace GreenLight.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult OnOrOff()
         {
             ViewBag.Message = "Your application description page.";
-
-            return View();
+            var posts = unitOfWork.Repository<Post>();
+            return View(posts);
         }
 
-        public ActionResult Contact()
+        public ActionResult Ranking()
         {
             ViewBag.Message = "Your contact page.";
 
