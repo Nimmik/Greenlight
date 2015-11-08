@@ -3,13 +3,44 @@
 @{
     ViewBag.Title = "Post";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>This is Post Page</p>
-<div>
+<nav class="grey lighten-1" style="margin-bottom: 3em;">
+    <div class="nav-wrapper">
+        @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+        {
+            <h2>@ViewBag.Title.</h2>
+            <div class="input-field">
+                <input id="search" type="search" name="query">
+                <label for="search"><button><i class="glyphicon glyphicon-search">Search</i></button></label>
+            </div>
+        }
+    </div>
+</nav>
+
+<div class="row">
     @foreach (var p in Model)
     {
-        <div>@p</div>
+        <div class="col s12 m6 l4">
+            <div class="card">
+                <a href="@Url.Action("Detail", "Home", new {id = @p.Id})">
+                    <div class="card-content black-text">
+                        <div class="@(p.Result==null?"":(bool)(p.Result)?"good":"bad")">
+                            <span class="card-title black-text">@p.Title</span>
+                            <ul>
+                                <li>
+                                    @Html.DisplayFor(a => p.PostedBy.Id)
+                                </li>
+                                <li>
+                                    @Html.DisplayFor(a => p.Description)
+                                </li>
+                                <li>
+                                    @Html.DisplayFor(a => p.Views)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
     }
 </div>

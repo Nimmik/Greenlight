@@ -20,9 +20,15 @@ namespace GreenLight.Controllers
 
         public ActionResult OnOrOff()
         {
-            ViewBag.Message = "Your application description page.";
-            var posts = unitOfWork.Repository<Post>();
+            var posts = unitOfWork.Repository<Post>().Get();
             return View(posts);
+        }
+
+        public ActionResult Search(string query)
+        {
+            var userId = User.Identity.GetUserId();
+            var posts = unitOfWork.Repository<Post>().Get(a => a.Title.Contains(query));
+            return View("OnOrOff", posts);
         }
 
         public ActionResult Ranking()
