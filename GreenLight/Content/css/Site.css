@@ -1,4 +1,16 @@
-﻿.validation-summary {
+﻿div.good {
+  background-color: green;
+}
+div.red {
+  background-color: red;
+}
+div.side-bar {
+  border-style: solid;
+}
+div.card {
+  border-style: solid;
+}
+.validation-summary {
   padding: 1px 20px;
   margin-bottom: 50px;
 }
