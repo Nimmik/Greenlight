@@ -4,19 +4,18 @@
     ViewBag.Title = "Post";
 }
 
-<div class="col-xs-12 col-sm-8, col-md-10, col-lg-10">
-    <div class="nav-wrapper">
-        @using (Html.BeginForm("Search", "Home", FormMethod.Get))
-        {
-            <h2>@ViewBag.Title.</h2>
-            <div class="input-field">
-                <input id="search" type="search" name="query">
-                <label for="search"><button><i class="glyphicon glyphicon-search">Search</i></button></label>
-            </div>
-        }
-    </div>
-
-    <div class="row">
+<div class="row">
+    <div class="col-xs-12 col-sm-8, col-md-10, col-lg-10">
+        <div class="nav-wrapper">
+            @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+            {
+                <h2>@ViewBag.Title.</h2>
+                <div class="input-field">
+                    <input id="search" type="search" name="query">
+                    <label for="search"><button><i class="glyphicon glyphicon-search">Search</i></button></label>
+                </div>
+            }
+        </div>
         <div class="postpage">
             @foreach (var p in Model)
             {
@@ -43,10 +42,10 @@
             }
         </div>
     </div>
-</div>
-
-<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2">
-    <div class="side-bar">
-        <p>Hello</p>
+    <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2">
+        <div class="side-bar">
+            <p>Hello</p>
+        </div>
     </div>
 </div>
+<div class="clearfix"></div>

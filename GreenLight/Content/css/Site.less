@@ -1,62 +1,31 @@
-﻿div.good{
-    background-color : green;
+﻿@import "bootstrap/variables.less";
+
+
+.navbar-spacer {
+    margin-top: @navbar-height + 20px;
 }
 
-div.red{
-    background-color : red;
+div.good {
+    background-color: green;
 }
 
-div.side-bar{
-    border-style : solid;
+div.red {
+    background-color: red;
 }
 
-div.card{
-    border-style : solid;
+div.side-bar {
+    border-style: solid;
+}
+
+div.card {
+    border-style: solid;
 }
 
 .validation-summary {
-  padding: 1px 20px;
-  margin-bottom: 50px;
+    padding: 1px 20px;
+    margin-bottom: 50px;
 }
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-main {
-  flex: 1 0 auto;
-}
-.gallery li {
-  display: inline-block;
-}
-input[type=file].customFileInput {
-  outline: none !important;
-  width: 100%;
-  visibility: hidden;
-}
-input[type=file].customFileInput::-webkit-file-upload-button {
-  visibility: hidden;
-}
-ul.imagePrev li {
-  display: inline-block;
-  border: 3px solid rgba(0, 0, 0, 0.22);
-  margin: 0.5em;
-  position: relative;
-}
-ul.imagePrev li .deleteBtn {
-  display: block;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  margin: auto;
-  opacity: 0;
-}
-ul.imagePrev li:hover .deleteBtn {
-  opacity: 0.8;
-}
+
 /* Custom Stylesheet */
 /**
  * Use this file to override Materialize files so you can update
@@ -65,40 +34,49 @@ ul.imagePrev li:hover .deleteBtn {
  * Made By MaterializeCSS.com
  */
 p {
-  line-height: 2rem;
+    line-height: 2rem;
 }
+
 .button-collapse {
-  color: #26a69a;
+    color: #26a69a;
 }
+
 .parallax-container {
-  min-height: 380px;
-  line-height: 0;
-  height: auto;
-  color: rgba(255, 255, 255, 0.9);
+    min-height: 380px;
+    line-height: 0;
+    height: auto;
+    color: rgba(255, 255, 255, 0.9);
 }
+
 .parallax-container .section {
-  width: 100%;
+    width: 100%;
 }
+
 @media only screen and (max-width: 992px) {
-  .parallax-container .section {
-    position: absolute;
-    top: 40%;
-  }
-  #index-banner .section {
-    top: 10%;
-  }
+    .parallax-container .section {
+        position: absolute;
+        top: 40%;
+    }
+
+    #index-banner .section {
+        top: 10%;
+    }
 }
+
 @media only screen and (max-width: 600px) {
-  #index-banner .section {
-    top: 0;
-  }
+    #index-banner .section {
+        top: 0;
+    }
 }
+
 .icon-block {
-  padding: 0 15px;
+    padding: 0 15px;
 }
+
 .icon-block .material-icons {
-  font-size: inherit;
+    font-size: inherit;
 }
+
 footer.page-footer {
-  margin: 0;
+    margin: 0;
 }

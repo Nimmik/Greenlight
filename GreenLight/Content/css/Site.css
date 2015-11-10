@@ -1,4 +1,7 @@
-﻿div.good {
+﻿.navbar-spacer {
+  margin-top: 70px;
+}
+div.good {
   background-color: green;
 }
 div.red {
@@ -13,45 +16,6 @@ div.card {
 .validation-summary {
   padding: 1px 20px;
   margin-bottom: 50px;
-}
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-main {
-  flex: 1 0 auto;
-}
-.gallery li {
-  display: inline-block;
-}
-input[type=file].customFileInput {
-  outline: none !important;
-  width: 100%;
-  visibility: hidden;
-}
-input[type=file].customFileInput::-webkit-file-upload-button {
-  visibility: hidden;
-}
-ul.imagePrev li {
-  display: inline-block;
-  border: 3px solid rgba(0, 0, 0, 0.22);
-  margin: 0.5em;
-  position: relative;
-}
-ul.imagePrev li .deleteBtn {
-  display: block;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  margin: auto;
-  opacity: 0;
-}
-ul.imagePrev li:hover .deleteBtn {
-  opacity: 0.8;
 }
 /* Custom Stylesheet */
 /**
