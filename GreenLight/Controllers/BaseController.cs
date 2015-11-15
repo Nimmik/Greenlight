@@ -6,7 +6,7 @@ using System.Web;
 using JBWebappLibrary.Repository;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
-using Greenlight.Models.Context;
+using GreenLight.Models.Context;
 
 namespace GreenLight.Controllers
 {

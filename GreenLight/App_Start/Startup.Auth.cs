@@ -1,5 +1,5 @@
 ﻿using System;
-using Greenlight.Models.Context;
+using GreenLight.Models.Context;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;

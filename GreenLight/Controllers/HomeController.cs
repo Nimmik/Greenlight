@@ -1,4 +1,5 @@
-﻿using Greenlight.Models;
+﻿using GreenLight.Models;
+using GreenLight.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,7 +22,15 @@ namespace GreenLight.Controllers
         public ActionResult OnOrOff()
         {
             var posts = unitOfWork.Repository<Post>().Get();
+
             return View(posts);
+        }
+
+        public ActionResult Detail(int id)
+        {
+            var post = unitOfWork.Repository<Post>().GetByID(id);
+
+            return View(post);
         }
 
         public ActionResult Search(string query)

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using GreenLight.Models;
 
-namespace Greenlight.Models
+namespace GreenLight.Models
 {
     public class Comment
     {

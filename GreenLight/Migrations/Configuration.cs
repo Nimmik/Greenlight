@@ -1,4 +1,4 @@
-using Greenlight.Models;
+using GreenLight.Models;
 
 namespace GreenLight.Migrations
 {
@@ -10,14 +10,14 @@ namespace GreenLight.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Greenlight.Models.Context.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<GreenLight.Models.Context.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Greenlight.Models.Context.ApplicationDbContext context)
+        protected override void Seed(GreenLight.Models.Context.ApplicationDbContext context)
         {
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new UserManager<ApplicationUser>(userStore);
@@ -43,6 +43,32 @@ namespace GreenLight.Migrations
                   Views = 2,
                   Result = null,
                   Title = "A GOOD TITLE"
+              }
+            );
+
+            context.Posts.AddOrUpdate(
+              new Post()
+              {
+                  Id = 2,
+                  Description = "This is a post",
+                  PostedById = userManager.FindByEmail("admin@t.t").Id,
+                  PostedBy = userManager.FindByEmail("admin@t.t"),
+                  Views = 25,
+                  Result = false,
+                  Title = "Hello world"
+              }
+            );
+
+            context.Posts.AddOrUpdate(
+              new Post()
+              {
+                  Id = 3,
+                  Description = "This was a post",
+                  PostedById = userManager.FindByEmail("admin@t.t").Id,
+                  PostedBy = userManager.FindByEmail("admin@t.t"),
+                  Views = 1212,
+                  Result = true,
+                  Title = "My light is green"
               }
             );
 

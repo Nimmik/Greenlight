@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Greenlight.Models.Post>
+﻿@model IEnumerable<GreenLight.Models.Post>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Post";
@@ -19,32 +20,28 @@
         <div class="postpage">
             @foreach (var p in Model)
             {
-                <div class="card">
-                    <a href="@Url.Action("Detail", "Home", new {id = @p.Id})">
-                        <div class="card-content black-text">
-                            <div class="@(p.Result==null?"":(bool)(p.Result)?"good":"bad")">
-                                <span class="card-title black-text">@p.Title</span>
-                                <ul>
-                                    <li>
-                                        @Html.DisplayFor(a => p.PostedBy.Id)
-                                    </li>
-                                    <li>
-                                        @Html.DisplayFor(a => p.Description)
-                                    </li>
-                                    <li>
-                                        @Html.DisplayFor(a => p.Views)
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                <a href="@Url.Action("Detail", "Home", new {id = p.Id})">
+                    <div class="card-content black-text @(p.Result==null?"":(bool)(p.Result)?"good":"bad")">
+                        <span class="card-title black-text">@p.Title</span>
+                        <ul>
+                            <li>
+                                @Html.DisplayFor(a => p.PostedBy.UserName)
+                            </li>
+                            <li>
+                                @Html.DisplayFor(a => p.Description)
+                            </li>
+                            <li>
+                                @Html.DisplayFor(a => p.Views)
+                            </li>
+                        </ul>
+                    </div>
+                </a>
             }
         </div>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2">
         <div class="side-bar">
-            <p>Hello</p>
+            <p>@User.Identity.GetUserName()</p>
         </div>
     </div>
 </div>
