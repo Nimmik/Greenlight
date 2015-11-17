@@ -19,11 +19,17 @@ namespace GreenLight.Controllers
             return View();
         }
 
+        //OnOrOff Page
         public ActionResult OnOrOff()
         {
             var posts = unitOfWork.Repository<Post>().Get();
 
             return View(posts);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
         }
 
         public ActionResult Detail(int id)
@@ -40,9 +46,17 @@ namespace GreenLight.Controllers
             return View("OnOrOff", posts);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult newPost(Post post)
+        {
+            return RedirectToAction("Index", "GreenLight");
+        }
+
+        //RankingPage
         public ActionResult Ranking()
         {
-            ViewBag.Message = "Your contact page.";
+            var ranks = unitOfWork.Repository<Post>().Get();
 
             return View();
         }
