@@ -17,14 +17,11 @@
         @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { id = "postForm" }))
         {
             @Html.AntiForgeryToken()
-            @Html.HiddenFor(m => m.Id)
-            @Html.HiddenFor(m => m.PostedById)
-            @Html.HiddenFor(m => m.PostedBy)
             @Html.EditorFor(m => m.Title)
             @Html.EditorFor(m => m.Description)
-            @Html.HiddenFor(m => m.CreatedOn)
         }
     </div>
+    <button type="submit">등록</button>
 }
 
 <div>

@@ -32,10 +32,27 @@ namespace GreenLight.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                post.PostedById = User.Identity.GetUserId();
+                post.PostedBy = UserManager.FindById(post.PostedById);
+                post.CreatedOn = DateTime.Now;
+                post.Result = null;
+                post.Views = 0;
+            }
+            return RedirectToAction("Index", "GreenLight");
+        }
+
         public ActionResult Detail(int id)
         {
             var post = unitOfWork.Repository<Post>().GetByID(id);
-
+            post.Views++;
+            unitOfWork.Repository<Post>().Update(post);
+            unitOfWork.Save();
             return View(post);
         }
 
@@ -45,14 +62,7 @@ namespace GreenLight.Controllers
             var posts = unitOfWork.Repository<Post>().Get(a => a.Title.Contains(query));
             return View("OnOrOff", posts);
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult newPost(Post post)
-        {
-            return RedirectToAction("Index", "GreenLight");
-        }
-
+        
         //RankingPage
         public ActionResult Ranking()
         {
