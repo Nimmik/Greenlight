@@ -12,7 +12,6 @@ namespace GreenLight.Models
     {
         public Post()
         {
-            this.CreatedOn = DateTime.UtcNow;
         }
 
         [Key]
