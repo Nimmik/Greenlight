@@ -29,6 +29,10 @@ namespace GreenLight.Controllers
 
         public ActionResult Create()
         {
+            if (User.Identity.GetUserId() == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View();
         }
 
@@ -39,12 +43,13 @@ namespace GreenLight.Controllers
             if (ModelState.IsValid)
             {
                 post.PostedById = User.Identity.GetUserId();
-                post.PostedBy = UserManager.FindById(post.PostedById);
                 post.CreatedOn = DateTime.Now;
                 post.Result = null;
                 post.Views = 0;
             }
-            return RedirectToAction("Index", "GreenLight");
+            unitOfWork.Repository<Post>().Insert(post);
+            unitOfWork.Save();
+            return RedirectToAction("OnOrOff", "Home");
         }
 
         public ActionResult Detail(int id)

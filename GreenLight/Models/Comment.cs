@@ -20,13 +20,13 @@ namespace GreenLight.Models
 
         public string CreatedById { get; set; }
         [ForeignKey("CreatedById")]
-        public ApplicationUser CreatedBy { get; set; }
+        public virtual ApplicationUser CreatedBy { get; set; }
 
         public string Writing { get; set; }
 
         public int PostId { get; set; }
         [ForeignKey("PostId")]
-        public Post Post { get; set; }
+        public virtual Post Post { get; set; }
 
         public DateTime CreatedOn { get; set; }
         public int Likes { get; set; }

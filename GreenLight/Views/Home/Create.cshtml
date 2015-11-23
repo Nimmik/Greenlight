@@ -4,26 +4,18 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create Post</h2>
 
+<div class="form-horizontal">
+    @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { id = "postForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.EditorFor(m => m.Title)
+        @Html.EditorFor(m => m.Description)
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Post</h4>
-        <hr />
-        @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { id = "postForm" }))
-        {
-            @Html.AntiForgeryToken()
-            @Html.EditorFor(m => m.Title)
-            @Html.EditorFor(m => m.Description)
-        }
-    </div>
-    <button type="submit">등록</button>
-}
-
+        <input type="submit" value="등록" class="btn-primary">
+    }
+</div>
 <div>
     @Html.ActionLink("Back to List", "OnOrOff")
 </div>

@@ -22,7 +22,7 @@ namespace GreenLight.Models
 
         public string VoterId { get; set; }
         [ForeignKey("VoterId")]
-        public ApplicationUser Voter { get; set; }
+        public virtual ApplicationUser Voter { get; set; }
 
         public int PostId { get; set; }
         [ForeignKey("PostId")]

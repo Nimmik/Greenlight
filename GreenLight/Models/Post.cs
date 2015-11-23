@@ -23,7 +23,7 @@ namespace GreenLight.Models
 
         public string PostedById { get; set; }
         [ForeignKey("PostedById")]
-        public ApplicationUser PostedBy { get; set; }
+        public virtual ApplicationUser PostedBy { get; set; }
 
         public int Views { get; set; }
         public bool? Result { get; set; }
