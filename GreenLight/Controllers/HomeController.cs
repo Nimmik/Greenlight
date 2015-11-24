@@ -51,23 +51,46 @@ namespace GreenLight.Controllers
             unitOfWork.Save();
             return RedirectToAction("OnOrOff", "Home");
         }
-
-        public ActionResult Detail(int id)
-        {
-            var post = unitOfWork.Repository<Post>().GetByID(id);
-            post.Views++;
-            unitOfWork.Repository<Post>().Update(post);
-            unitOfWork.Save();
-            return View(post);
-        }
-
+        
         public ActionResult Search(string query)
         {
             var userId = User.Identity.GetUserId();
             var posts = unitOfWork.Repository<Post>().Get(a => a.Title.Contains(query));
             return View("OnOrOff", posts);
         }
+
+        //Detail Page
+        public ActionResult Detail(int id)
+        {
+            var post = unitOfWork.Repository<Post>().GetByID(id);
+            var comments = unitOfWork.Repository<Comment>().Get();
+            post.Views++;
+            unitOfWork.Repository<Post>().Update(post);
+            unitOfWork.Save();
+            return View(post);
+        }
         
+        public ActionResult AddComment(int PostID)
+        {
+            var newComment = new Comment();
+            newComment.PostId = PostID;
+            return View(newComment);
+        }
+
+        [HttpPost]
+        public ActionResult AddComment(Comment comment)
+        {
+            if (ModelState.IsValid)
+            {
+                comment.CreatedById = User.Identity.GetUserId();
+                comment.Likes = 0;
+                comment.CreatedOn = DateTime.Now;
+            }
+            unitOfWork.Repository<Comment>().Insert(comment);
+            unitOfWork.Save();
+            return RedirectToAction("Detail","Home",new { id = comment.PostId });                
+        }
+
         //RankingPage
         public ActionResult Ranking()
         {

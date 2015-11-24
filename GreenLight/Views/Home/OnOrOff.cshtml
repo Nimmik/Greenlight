@@ -6,7 +6,7 @@
 }
 
 <div class="row">
-    <div class="col-xs-12 col-sm-8, col-md-10, col-lg-10">
+    <div class="col-xs-12 col-sm-8, col-md-9, col-lg-9">
         <div class="nav-wrapper">
             @using (Html.BeginForm("Search", "Home", FormMethod.Get))
             {
@@ -21,17 +21,14 @@
             @foreach (var p in Model)
             {
                 <a href="@Url.Action("Detail", "Home", new {id = p.Id})">
-                    <div class="card-content black-text @(p.Result==null?"":(bool)(p.Result)?"good":"bad")">
-                        <span class="card-title black-text">@p.Title</span>
+                    <div class="card-content black-text @(p.Result==null?"":(bool)(p.Result)?"on":"off")">
+                        <h4>@p.Title</h4>
                         <ul>
                             <li>
-                                @Html.DisplayFor(a => p.PostedBy.UserName)
+                                Description : @Html.DisplayFor(a => p.DescriptionShort)
                             </li>
                             <li>
-                                @Html.DisplayFor(a => p.Description)
-                            </li>
-                            <li>
-                                @Html.DisplayFor(a => p.Views)
+                                Views : @Html.DisplayFor(a => p.Views)
                             </li>
                         </ul>
                     </div>
@@ -40,7 +37,7 @@
         </div>
         @Html.ActionLink("글쓰기", "Create", "Home", "class=btn-link role=button")
     </div>
-    <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2">
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
         <div class="side-bar">
             <p>@User.Identity.GetUserName()</p>
         </div>

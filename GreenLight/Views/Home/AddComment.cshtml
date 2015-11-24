@@ -1,0 +1,19 @@
+﻿@model GreenLight.Models.Comment
+
+@using (Html.BeginForm("AddComment", "Home", FormMethod.Post, new { id = "commentForm" })) 
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="input-group">
+            @Html.HiddenFor(m => m.PostId)
+            @Html.EditorFor(m => m.Writing)
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">댓글 입력</button>
+            </span>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

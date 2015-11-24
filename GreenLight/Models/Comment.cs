@@ -12,7 +12,6 @@ namespace GreenLight.Models
     {
         public Comment()
         {
-            this.CreatedOn = DateTime.UtcNow;
         }
 
         [Key]

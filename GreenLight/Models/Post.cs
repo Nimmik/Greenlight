@@ -19,6 +19,7 @@ namespace GreenLight.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string DescriptionShort { get { return this.Description.Length < 200 ? this.Description : this.Description.Substring(0, 200) + "..."; } }
         public DateTime CreatedOn { get; set; }
 
         public string PostedById { get; set; }
