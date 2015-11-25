@@ -51,6 +51,25 @@ namespace GreenLight.Controllers
             unitOfWork.Save();
             return RedirectToAction("OnOrOff", "Home");
         }
+
+        public ActionResult Delete(int Id)
+        {
+            var model = unitOfWork.Repository<Post>().GetByID(Id);
+            if(model == null)
+            {
+                return new HttpNotFoundResult();
+            }
+            else if(User.Identity.IsAuthenticated && (User.Identity.GetUserId().Equals(model.PostedById)))
+            { 
+                foreach(var c in model.Comments)
+                {
+                    unitOfWork.Repository<Comment>().Delete(c.Id);
+                }
+                unitOfWork.Repository<Post>().Delete(model.Id);
+                unitOfWork.Save();
+            }
+            return RedirectToAction("OnOrOff", "Home");
+        }
         
         public ActionResult Search(string query)
         {
@@ -63,7 +82,7 @@ namespace GreenLight.Controllers
         public ActionResult Detail(int id)
         {
             var post = unitOfWork.Repository<Post>().GetByID(id);
-            var comments = unitOfWork.Repository<Comment>().Get();
+            unitOfWork.Repository<Comment>().Get();
             post.Views++;
             unitOfWork.Repository<Post>().Update(post);
             unitOfWork.Save();
@@ -89,6 +108,21 @@ namespace GreenLight.Controllers
             unitOfWork.Repository<Comment>().Insert(comment);
             unitOfWork.Save();
             return RedirectToAction("Detail","Home",new { id = comment.PostId });                
+        }
+
+        public ActionResult DeleteComment(int commentId)
+        {
+            var model = unitOfWork.Repository<Comment>().GetByID(commentId);
+            if (model == null)
+            {
+                return new HttpNotFoundResult();
+            }
+            else if (User.Identity.IsAuthenticated && (User.Identity.GetUserId().Equals(model.CreatedById)))
+            {
+                unitOfWork.Repository<Comment>().Delete(model.Id);
+                unitOfWork.Save();
+            }
+            return RedirectToAction("Detail", "Home", new { id = model.PostId });
         }
 
         //RankingPage
