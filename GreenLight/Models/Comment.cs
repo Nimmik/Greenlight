@@ -10,6 +10,11 @@ namespace GreenLight.Models
 {
     public class Comment
     {
+        public Comment(int postId)
+        {
+            this.PostId = postId;
+            this.Writing = string.Empty;
+        }
         public Comment()
         {
         }

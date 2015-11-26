@@ -30,9 +30,9 @@ namespace GreenLight.Models
         public bool? Result { get; set; }
         
         [InverseProperty("Post")]
-        public List<Comment> Comments { get; set; }
+        public virtual List<Comment> Comments { get; set; }
         
         [InverseProperty("Post")]
-        public List<Vote> Votes { get; set; }
+        public virtual List<Vote> Votes { get; set; }
     }
 }

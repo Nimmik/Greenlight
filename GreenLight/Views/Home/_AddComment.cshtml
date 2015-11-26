@@ -1,6 +1,5 @@
 ﻿@model GreenLight.Models.Comment
-
-@using (Html.BeginForm("AddComment", "Home", FormMethod.Post, new { id = "commentForm" })) 
+@using (Html.BeginForm("AddComment", "Home", FormMethod.Post, new { id = "commentForm" }))
 {
     @Html.AntiForgeryToken()
     <div class="row">
@@ -12,8 +11,4 @@
             </span>
         </div>
     </div>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
 }

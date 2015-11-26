@@ -89,40 +89,39 @@ namespace GreenLight.Controllers
             return View(post);
         }
         
-        public ActionResult AddComment(int PostID)
-        {
-            var newComment = new Comment();
-            newComment.PostId = PostID;
-            return View(newComment);
-        }
-
         [HttpPost]
         public ActionResult AddComment(Comment comment)
         {
             if (ModelState.IsValid)
             {
-                comment.CreatedById = User.Identity.GetUserId();
-                comment.Likes = 0;
                 comment.CreatedOn = DateTime.Now;
+                comment.CreatedById = User.Identity.GetUserId();
+                unitOfWork.Repository<Comment>().Insert(comment);
+                unitOfWork.Save();
             }
-            unitOfWork.Repository<Comment>().Insert(comment);
-            unitOfWork.Save();
-            return RedirectToAction("Detail","Home",new { id = comment.PostId });                
+            var model = unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(comment.PostId));
+            ViewBag.postId = comment.PostId;
+            return PartialView("_CommentSection",model);
         }
 
         public ActionResult DeleteComment(int commentId)
         {
-            var model = unitOfWork.Repository<Comment>().GetByID(commentId);
-            if (model == null)
+            var userId = User.Identity.GetUserId();
+            var comment =
+                unitOfWork.Repository<Comment>().Get(a => a.Id.Equals(commentId) && a.CreatedById.Equals(userId));
+            if (comment.Any())
             {
-                return new HttpNotFoundResult();
-            }
-            else if (User.Identity.IsAuthenticated && (User.Identity.GetUserId().Equals(model.CreatedById)))
-            {
-                unitOfWork.Repository<Comment>().Delete(model.Id);
+                unitOfWork.Repository<Comment>().Delete(comment.First());
                 unitOfWork.Save();
             }
-            return RedirectToAction("Detail", "Home", new { id = model.PostId });
+            else
+            {
+                return new HttpUnauthorizedResult();
+            }
+            var postId = comment.First().PostId;
+            var model = unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(postId));
+            ViewBag.postId = postId;
+            return PartialView("_CommentSection", model);
         }
 
         //RankingPage

@@ -5,17 +5,13 @@
         <h3>이야기</h3>
         <p>@Html.DisplayFor(model => model.Description)</p>
         <hr />
-        @{Html.RenderAction("AddComment", "Home", new { PostID = Model.Id });}
-            @if (Model.Comments != null)
-            {
-                foreach (var c in Model.Comments)
-                {
-                    <div class="descript">@Html.DisplayFor(a => c.Writing)</div>
-                    @Html.ActionLink("Delete", "DeleteComment", "Home", new { commentId = c.Id }, new { onclick = "return confirm('Are you sure you wish to delete this?');" })
-                }
-            }
-        
     </div>
+
+    <div id="CommentSection">
+        @{ViewBag.postId = Model.Id;}
+        @Html.Partial("_CommentSection", Model.Comments)
+    </div>
+
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
         @Html.ActionLink("Back to List", "OnOrOff")
@@ -31,8 +27,40 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <dt>신호등</dt>
-                <dd>@Html.DisplayFor(m=>m.Result)</dd>
+                <dd>@Html.DisplayFor(m => m.Result)</dd>
             }
         </dl>
     </div>
 </div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            bindStuff();
+        });
+
+        function bindStuff() {
+            console.log("bind");
+            $("#commentForm").ajaxForm({
+                target: "#CommentSection",
+                success: function() {
+                    bindStuff();
+                }
+            });
+        }
+
+        $(document).on("click", ".deleteComment", function() {
+            if (!confirm("DELETE?")) {
+                return;
+            }
+
+            $("#CommentSection").load("@Url.Action("DeleteComment", "Home")",
+            {
+                commentId: $(this).data("commentid")
+            }, function() {
+                bindStuff();
+            });
+        });
+    </script>
+}
