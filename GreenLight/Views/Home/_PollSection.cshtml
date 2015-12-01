@@ -1,0 +1,25 @@
+﻿@using GreenLight.Models
+@using Microsoft.AspNet.Identity;
+@model IEnumerable<GreenLight.Models.Vote>
+
+@{ 
+    var yes = Model.Count(v => v.OnOff == true);
+    var no = Model.Count(v => v.OnOff == false);
+}
+
+@if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)) || !User.Identity.IsAuthenticated)
+{
+    <div class="voteResult" id="pollResult">
+        <p>
+            그린라이트 : @Html.DisplayFor(a => yes)
+        </p>
+        <p>
+            레드라이트 : @Html.DisplayFor(a => no)
+        </p>            
+    </div>
+}
+else
+{
+    @Html.Partial("_Poll", new Vote(ViewBag.postId))
+}
+

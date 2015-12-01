@@ -23,13 +23,16 @@
             <dt>제목</dt>
             <dd>@Html.DisplayFor(model => model.Title)</dd>
             <dt>조회수</dt>
-            <dd>@Html.DisplayFor(m => m.Views)</dd>
+            <dd>@Html.DisplayFor(model => model.Views)</dd>
             @if (User.Identity.IsAuthenticated)
             {
                 <dt>신호등</dt>
-                <dd>@Html.DisplayFor(m => m.Result)</dd>
+                <dd>@Html.DisplayFor(model => model.Result)</dd>
             }
         </dl>
+    </div>
+    <div id="PollSection">
+        @Html.Partial("_PollSection",Model.Votes)
     </div>
 </div>
 
@@ -37,17 +40,32 @@
 {
     <script>
         $(document).ready(function() {
-            bindStuff();
+            bindAll();
         });
 
-        function bindStuff() {
+        function bindAll() {
+            bindComment();
+            bindPoll();
+        }
+
+        function bindComment() {
             console.log("bind");
             $("#commentForm").ajaxForm({
                 target: "#CommentSection",
                 success: function() {
-                    bindStuff();
+                    bindAll();
                 }
             });
+        }
+
+        function bindPoll() {
+            console.log("bind");
+            $("#voteForm").ajaxForm({
+                target: "#PollSection",
+                success: function () {
+                    bindAll();
+                }
+            })
         }
 
         $(document).on("click", ".deleteComment", function() {

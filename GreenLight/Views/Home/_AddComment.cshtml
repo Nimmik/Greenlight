@@ -1,6 +1,15 @@
 ﻿@model GreenLight.Models.Comment
-@using (Html.BeginForm("AddComment", "Home", FormMethod.Post, new { id = "commentForm" }))
+
+@if (!User.Identity.IsAuthenticated)
 {
+    <input type="text" value="댓글을 입력하기 위해서 로그인을 해 주세요" readonly />
+    <button class="btn btn-default" type="button">@Html.ActionLink("로그인", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</button>
+}
+
+else
+{
+    using (Html.BeginForm("AddComment", "Home", FormMethod.Post, new { id = "commentForm" }))
+    {
     @Html.AntiForgeryToken()
     <div class="row">
         <div class="input-group">
@@ -11,4 +20,5 @@
             </span>
         </div>
     </div>
+    }
 }

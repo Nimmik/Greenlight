@@ -1,0 +1,25 @@
+﻿@model GreenLight.Models.Vote
+
+<div class="poll">
+    <table>
+        <tr>
+            투표를 해 주세요
+        </tr>        
+        @using (Html.BeginForm("VoteFor", "Home", FormMethod.Post, new { id = "voteForm" }))
+        {
+            <tr>
+                <td>
+                    @Html.HiddenFor(m => m.PostId)
+                    @Html.RadioButtonFor(m => m.OnOff, true) 그린라이트가 확실해요, 성공하세요!
+                    <br />
+                    @Html.RadioButtonFor(m => m.OnOff, false) 정보가 부족해요. 좀더 시간을...
+                </td>   
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-default" type="submit">투표 하기</button>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

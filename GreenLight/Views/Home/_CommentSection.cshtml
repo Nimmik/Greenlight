@@ -6,5 +6,8 @@
 @foreach (var c in Model.OrderBy(a=>a.CreatedOn))
 {
     <div class="descript">@Html.DisplayFor(a => c.Writing)</div>
-    <button type="button" class="btn btn-danger deleteComment" data-commentid="@c.Id">Delete</button>
+    if (User.Identity.IsAuthenticated)
+    {
+        <button type="button" class="btn btn-danger deleteComment" data-commentid="@c.Id">Delete</button>
+    }
 }

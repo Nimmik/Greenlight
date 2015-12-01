@@ -187,6 +187,10 @@
     <Compile Include="Migrations\201511040316547_initial.Designer.cs">
       <DependentUpon>201511040316547_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512010452094_initial1.cs" />
+    <Compile Include="Migrations\201512010452094_initial1.Designer.cs">
+      <DependentUpon>201512010452094_initial1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Utility\DateTimeExtensions.cs" />
     <Compile Include="Utility\LocalizationHelper.cs" />
@@ -806,6 +810,8 @@
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Views\Home\_CommentSection.cshtml" />
     <Content Include="Views\Home\_AddComment.cshtml" />
+    <Content Include="Views\Home\_Poll.cshtml" />
+    <Content Include="Views\Home\_PollSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -825,6 +831,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201511040316547_initial.resx">
       <DependentUpon>201511040316547_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512010452094_initial1.resx">
+      <DependentUpon>201512010452094_initial1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

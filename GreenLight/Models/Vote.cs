@@ -10,15 +10,18 @@ namespace GreenLight.Models
 {
     public class Vote
     {
+        public Vote(int postid)
+        {
+            this.PostId = postid;
+        }
+
         public Vote()
         {
-            this.CreatedOn = DateTime.UtcNow;
+
         }
 
         [Key]
         public int Id { get; set; }
-
-        public DateTime CreatedOn { get; set; }
 
         public string VoterId { get; set; }
         [ForeignKey("VoterId")]

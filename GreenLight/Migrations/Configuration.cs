@@ -87,13 +87,11 @@ namespace GreenLight.Migrations
             );
 
             context.Votes.AddOrUpdate(
-                new Vote()
+                new Vote(1)
                 {
                     Id = 1,
-                    CreatedOn = DateTime.Now,
                     VoterId = userManager.FindByEmail("admin@t.t").Id,
                     Voter = userManager.FindByEmail("admin@t.t"),
-                    PostId = 1,
                     Post = context.Posts.Find(1),
                     OnOff = true
                 }

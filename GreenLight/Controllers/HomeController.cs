@@ -89,10 +89,15 @@ namespace GreenLight.Controllers
             return View(post);
         }
         
+        //_Comment
         [HttpPost]
         public ActionResult AddComment(Comment comment)
         {
-            if (ModelState.IsValid)
+            if (!User.Identity.IsAuthenticated)
+            {
+                return new HttpUnauthorizedResult();
+            }
+            else if (ModelState.IsValid)
             {
                 comment.CreatedOn = DateTime.Now;
                 comment.CreatedById = User.Identity.GetUserId();
@@ -114,6 +119,10 @@ namespace GreenLight.Controllers
                 unitOfWork.Repository<Comment>().Delete(comment.First());
                 unitOfWork.Save();
             }
+            else if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             else
             {
                 return new HttpUnauthorizedResult();
@@ -122,6 +131,25 @@ namespace GreenLight.Controllers
             var model = unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(postId));
             ViewBag.postId = postId;
             return PartialView("_CommentSection", model);
+        }
+
+        //_Vote
+        [HttpPost]
+        public ActionResult VoteFor(Vote vote)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return new HttpUnauthorizedResult();
+            }
+            else if (ModelState.IsValid)
+            {
+                vote.VoterId = User.Identity.GetUserId();
+                unitOfWork.Repository<Vote>().Insert(vote);
+                unitOfWork.Save();
+            }
+            var model = unitOfWork.Repository<Vote>().Get(a => a.PostId.Equals(vote.PostId));
+            ViewBag.postId = vote.PostId;
+            return PartialView("_PollSection", model);
         }
 
         //RankingPage
