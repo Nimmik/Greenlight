@@ -1,65 +1,33 @@
 ﻿.navbar-spacer {
   margin-top: 70px;
 }
-div.good {
+div .on {
   background-color: #99FF95;
 }
-div.bad {
+div .off {
   background-color: #FF9ABC;
 }
-div.side-bar {
+.side-bar {
   border-style: solid;
 }
-div.card-content {
+.card-content {
   border-style: solid;
   margin-top: 10px;
+  color: black;
+}
+.card-title {
+  font-size: 250%;
+}
+.black-text {
+  color: black;
 }
 .validation-summary {
   padding: 1px 20px;
   margin-bottom: 50px;
 }
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
-p {
-  line-height: 2rem;
+li {
+  list-style-type: none;
 }
-.button-collapse {
-  color: #26a69a;
-}
-.parallax-container {
-  min-height: 380px;
-  line-height: 0;
-  height: auto;
-  color: rgba(255, 255, 255, 0.9);
-}
-.parallax-container .section {
-  width: 100%;
-}
-@media only screen and (max-width: 992px) {
-  .parallax-container .section {
-    position: absolute;
-    top: 40%;
-  }
-  #index-banner .section {
-    top: 10%;
-  }
-}
-@media only screen and (max-width: 600px) {
-  #index-banner .section {
-    top: 0;
-  }
-}
-.icon-block {
-  padding: 0 15px;
-}
-.icon-block .material-icons {
-  font-size: inherit;
-}
-footer.page-footer {
-  margin: 0;
+.descript {
+  text-align: justify;
 }

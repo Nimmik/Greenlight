@@ -13,7 +13,7 @@
     </div>
 
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
         @Html.ActionLink("Back to List", "OnOrOff")
     </p>
 </div>
@@ -44,6 +44,7 @@
         });
 
         function bindAll() {
+            $('input#Writing').attr('value', '');
             bindComment();
             bindPoll();
         }
@@ -52,7 +53,7 @@
             console.log("bind");
             $("#commentForm").ajaxForm({
                 target: "#CommentSection",
-                success: function() {
+                success: function () {
                     bindAll();
                 }
             });
@@ -77,7 +78,7 @@
             {
                 commentId: $(this).data("commentid")
             }, function() {
-                bindStuff();
+                bindAll();
             });
         });
     </script>

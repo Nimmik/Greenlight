@@ -155,9 +155,9 @@ namespace GreenLight.Controllers
         //RankingPage
         public ActionResult Ranking()
         {
-            var ranks = unitOfWork.Repository<Post>().Get();
+            var users = unitOfWork.Repository<ApplicationUser>().Get();
 
-            return View();
+            return View(users);
         }
     }
 }

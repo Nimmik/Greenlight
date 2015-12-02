@@ -21,12 +21,12 @@ namespace GreenLight.Models
         }
 
         [InverseProperty("PostedBy")]
-        public List<Post> Posts { get; set; }
+        public virtual List<Post> Posts { get; set; }
 
         [InverseProperty("CreatedBy")]
-        public List<Comment> Comments { get; set; }
+        public virtual List<Comment> Comments { get; set; }
 
         [InverseProperty("Voter")]
-        public List<Vote> Votes { get; set; }
+        public virtual List<Vote> Votes { get; set; }
     }
 }
