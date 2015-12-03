@@ -34,7 +34,7 @@
                             @if (!User.Identity.GetUserId().IsEmpty() && User.Identity.GetUserId().Equals(p.PostedById))
                             {
                                 @Html.ActionLink("Delete", "Delete", "Home", new { PostId = p.Id }, new { onclick = "return confirm('Are you sure you wish to delete this?');" })
-                            }                            
+                            }                         
                         </ul>
                     </div>
                 </a>

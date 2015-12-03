@@ -5,6 +5,7 @@
 
 
 <div class="col-lg-12">
+    <h4>댓글 <span class="badge">@Model.Count()</span></h4> <br />
     <table class="commentSection table">
         @foreach (var c in Model.OrderBy(a => a.CreatedOn))
         {
@@ -16,10 +17,12 @@
                     @Html.DisplayFor(a => c.Writing) <br />
                     <span class="likeInfo text-muted">Likes: @Html.DisplayFor(a => c.Likes)</span>
                 </td>
-                <td class="deleteComment">
+                <td class="deleteCommentColumn">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <button type="button" class="btn btn-danger" data-commentid="@c.Id">댓글 삭제</button>
+                        <div class="deleteComment">
+                            <button type="button" class="btn btn-danger" data-commentid="@c.Id">댓글 삭제</button>
+                        </div>
                     }
                 </td>
             </tr>
