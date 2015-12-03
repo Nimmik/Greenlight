@@ -3,11 +3,26 @@
 
 @Html.Partial("_AddComment",new Comment(ViewBag.postId))
 
-@foreach (var c in Model.OrderBy(a=>a.CreatedOn))
-{
-    <div class="descript">@Html.DisplayFor(a => c.Writing)</div>
-    if (User.Identity.IsAuthenticated)
-    {
-        <button type="button" class="btn btn-danger deleteComment" data-commentid="@c.Id">Delete</button>
-    }
-}
+
+<div class="col-lg-12">
+    <table class="commentSection table">
+        @foreach (var c in Model.OrderBy(a => a.CreatedOn))
+        {
+            <tr>
+                <td>
+                    Picture
+                </td>
+                <td>
+                    @Html.DisplayFor(a => c.Writing) <br />
+                    <span class="likeInfo text-muted">Likes: @Html.DisplayFor(a => c.Likes)</span>
+                </td>
+                <td class="deleteComment">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <button type="button" class="btn btn-danger" data-commentid="@c.Id">댓글 삭제</button>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>

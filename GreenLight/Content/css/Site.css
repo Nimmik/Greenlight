@@ -1,4 +1,7 @@
-﻿.navbar-spacer {
+﻿body {
+  background-color: #D1DDE8;
+}
+.navbar-spacer {
   margin-top: 70px;
 }
 div .on {
@@ -7,27 +10,48 @@ div .on {
 div .off {
   background-color: #FF9ABC;
 }
+div .input-group {
+  width: 100%;
+}
 .side-bar {
-  border-style: solid;
+  background-color: antiquewhite;
 }
 .card-content {
-  border-style: solid;
   margin-top: 10px;
   color: black;
-}
-.card-title {
-  font-size: 250%;
-}
-.black-text {
-  color: black;
+  background-color: #F4F7FF;
+  box-shadow: 2px 2px 10px #888888;
 }
 .validation-summary {
   padding: 1px 20px;
   margin-bottom: 50px;
 }
-li {
-  list-style-type: none;
+.postTitle {
+  padding-left: 0.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0em;
+  margin-bottom: 0px;
 }
-.descript {
-  text-align: justify;
+#Writing {
+  vertical-align: bottom;
+  width: 85%;
+}
+#commentSubmit {
+  vertical-align: top;
+}
+#commentFormGroup {
+  padding: inherit;
+  margin-left: 30px;
+}
+table {
+  width: 100%;
+  background-color: antiquewhite;
+  box-shadow: 2px 2px 2px #888888;
+}
+td.deleteComment {
+  width: 67px;
+}
+.likeInfo {
+  font-size: smaller;
+  padding-top: 4em;
 }

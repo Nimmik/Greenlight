@@ -7,7 +7,14 @@
     var no = Model.Count(v => v.OnOff == false);
 }
 
-@if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)))
+@if (!User.Identity.IsAuthenticated)
+{
+    <p>
+        투표를 하기 위해서는 로그인을 해 주세요
+    </p>
+
+}
+else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)))
 {
     <div class="voteResult" id="pollResult">
         <p>
@@ -15,17 +22,11 @@
         </p>
         <p>
             레드라이트 : @Html.DisplayFor(a => no)
-        </p>            
+        </p>
     </div>
-}
-else if (User.Identity.IsAuthenticated)
-{
-    @Html.Partial("_Poll", new Vote(ViewBag.postId))
 }
 else
 {
-    <p>
-        투표를 하기 위해서는 로그인을 해 주세요
-    </p>
+   @Html.Partial("_Poll", new Vote(ViewBag.postId))
 }
 

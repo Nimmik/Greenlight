@@ -10,9 +10,13 @@
             <tr>
                 <td>
                     @Html.HiddenFor(m => m.PostId)
-                    @Html.RadioButtonFor(m => m.OnOff, true) 그린라이트가 확실해요, 성공하세요!
+                    <div class="radio">
+                        <label>@Html.RadioButtonFor(m => m.OnOff, true) 그린라이트가 확실해요, 성공하세요!</label>
+                    </div>
                     <br />
-                    @Html.RadioButtonFor(m => m.OnOff, false) 정보가 부족해요. 좀더 시간을...
+                    <div class="radio">
+                        <label>@Html.RadioButtonFor(m => m.OnOff, false) 정보가 부족해요. 좀더 시간을...</label>
+                    </div>
                 </td>   
             </tr>
             <tr>

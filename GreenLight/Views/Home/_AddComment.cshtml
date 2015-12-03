@@ -1,5 +1,6 @@
 ﻿@model GreenLight.Models.Comment
 
+<h4>댓글</h4>
 @if (!User.Identity.IsAuthenticated)
 {
     <input type="text" class="Require-login "value="댓글을 입력하기 위해서 로그인을 해 주세요" readonly />
@@ -8,17 +9,22 @@
 
 else
 {
-    using (Html.BeginForm("AddComment", "Home", FormMethod.Post, new { id = "commentForm" }))
+    using (Html.BeginForm("AddComment", "Home", FormMethod.Post, new { id = "commentForm", @class = "form-horizontal" }))
     {
     @Html.AntiForgeryToken()
     <div class="row">
         <div class="input-group">
             @Html.HiddenFor(m => m.PostId)
-            @Html.EditorFor(m => m.Writing)
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">댓글 입력</button>
-            </span>
+            <div class="form-group col-lg-11" id="commentFormGroup">
+                <input type="text" class="form-control" id="Writing" name="Writing" placeholder="댓글 입력">
+                <span class="field-validation-valid help-block" data-valmsg-for="Writing" data-valmsg-replace="true"></span>
+
+                <Input class="btn btn-default" id="commentSubmit" type="submit" value="댓글 등록">
+            </div>
         </div>
     </div>
     }
 }
+
+<br />
+<br />
