@@ -1,40 +1,51 @@
 ﻿@model GreenLight.Models.Post
 
-<div class="col-xs-12 col-sm-8, col-md-9, col-lg-9">
+<div class="col-xs-12">
+    <div class="detailTitle">
+        <h3>@Html.DisplayFor(model => model.Title)</h3>
+        <span>조회수 : @Html.DisplayFor(model => model.Views)</span>
+        <span>신호등 : @(Model.Result == null ? "켜지기 전" : Model.Result == true ? "그린라이트" : "레드라이트")</span>
+    </div>
+    <hr />
     <div class="description">
-        <h3>이야기</h3>
+        <h4>이야기</h4>
         <p>@Html.DisplayFor(model => model.Description)</p>
         <hr />
     </div>
 
-    <div id="CommentSection">
-        @{ViewBag.postId = Model.Id;}
-        @Html.Partial("_CommentSection", Model.Comments)
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">댓글 <span class="badge">@Model.Comments.Count()</span><br /></a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+                <div class="panel-body" id="CommentSection">
+                    @{ViewBag.postId = Model.Id;}
+                    @Html.Partial("_CommentSection", Model.Comments)
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">투표</a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body" id="PollSection">
+                    @Html.Partial("_PollSection", Model.Votes)
+                </div>
+            </div>
+        </div>
     </div>
 
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
-        @Html.ActionLink("Back to List", "OnOrOff")
-    </p>
-</div>
-<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-    <div class="side-bar">
-        <dl>
-            <dt>제목</dt>
-            <dd>@Html.DisplayFor(model => model.Title)</dd>
-            <dt>조회수</dt>
-            <dd>@Html.DisplayFor(model => model.Views)</dd>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <dt>신호등</dt>
-                <dd>@Html.DisplayFor(model => model.Result)</dd>
-            }
-        </dl>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+            @Html.ActionLink("Back to List", "OnOrOff")
+        </p>
     </div>
-    <div id="PollSection">
-        @Html.Partial("_PollSection",Model.Votes)
-    </div>
-</div>
 
 @section scripts
 {

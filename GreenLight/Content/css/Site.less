@@ -1,7 +1,6 @@
 ﻿@import "bootstrap/variables.less";
 
 body{
-    background-color: #D1DDE8;
 }
 
 .navbar-spacer {
@@ -9,6 +8,36 @@ body{
 }
 
 div{
+    position:relative;
+
+    .input-group{
+        width:100%;
+    }
+
+    .detailTitle{
+        margin-top : -20px;
+    }
+
+    .writingDiv{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .card-content {
+        margin-top: 10px;
+        color : black;
+        background-color:#F4F7FF;
+        box-shadow: 2px 2px 10px #888888;
+        margin-left : 10px;
+        margin-right: 10px;
+        width : 20vw;
+        height : 200px;
+        display: inline-block;
+        @media (max-width: 992px){
+            width : 100%;
+        }
+    }
+
     .on {
         background-color: #99FF95;
     }
@@ -16,8 +45,10 @@ div{
         background-color: #FF9ABC;
     }
 
-    .input-group{
-        width:100%;
+    .deleteButton{
+        position:absolute;
+        bottom:10px;
+        right:15px;
     }
 }
 
@@ -29,20 +60,10 @@ hr{
     margin-top:2px;
 }
 
-.side-bar {
-    background-color: #E5FAFF;
-
-}
-
-.card-content {
-    margin-top: 10px;
-    color : black;
-    background-color:#F4F7FF;
-    box-shadow: 2px 2px 10px #888888;
-}
-
 ul{
     margin-bottom:10px;
+    list-style-type:none;
+    padding-left:20px;
 }
 
 .validation-summary {
@@ -71,9 +92,9 @@ ul{
     margin-left:30px;
 }
 
-table{
-    width:100%;
-    background-color:antiquewhite;
+table.commentSection{
+    width:inherit;
+    background-color:#F4F7FF;
     box-shadow: 2px 2px 2px #888888;
 }
 
@@ -81,7 +102,55 @@ td.deleteCommentColumn{
     width:67px;
 }
 
+td.writingColumn{
+    word-break: break-word;
+    width: inherit;
+}
+
+td.userIcon{
+    width : 140px;
+}
+
 .likeInfo{
     font-size : smaller;
     padding-top : 4em;
+}
+
+#custom-search-input {
+        margin:0;
+        margin-top: 10px;
+        padding: 0;
+    }
+ 
+#custom-search-input .search-query {
+    padding-right: 3px;
+    padding-right: 4px \9;
+    padding-left: 3px;
+    padding-left: 4px \9;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+ 
+#custom-search-input button {
+    border: 0;
+    background: none;
+    /** belows styles are working good */
+    padding: 2px 5px;
+    margin-top: 2px;
+    position: relative;
+    left: -28px;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color:#D9230F;
+}
+ 
+.search-query:focus + button {
+    z-index: 3;   
 }

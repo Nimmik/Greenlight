@@ -3,19 +3,19 @@
 
 @Html.Partial("_AddComment",new Comment(ViewBag.postId))
 
-
-<div class="col-lg-12">
-    <h4>댓글 <span class="badge">@Model.Count()</span></h4> <br />
-    <table class="commentSection table">
+<div class="col-xs-12">
+    <table class="commentSection table-bordered">
         @foreach (var c in Model.OrderBy(a => a.CreatedOn))
         {
             <tr>
-                <td>
+                <td class="userIcon">
                     Picture
                 </td>
-                <td>
-                    @Html.DisplayFor(a => c.Writing) <br />
-                    <span class="likeInfo text-muted">Likes: @Html.DisplayFor(a => c.Likes)</span>
+                <td class="writingColumn">
+                    <div class="writingDiv">
+                        @Html.DisplayFor(a => c.Writing) <br />
+                        <span class="likeInfo text-muted">Likes: @Html.DisplayFor(a => c.Likes)</span>
+                    </div>
                 </td>
                 <td class="deleteCommentColumn">
                     @if (User.Identity.IsAuthenticated)

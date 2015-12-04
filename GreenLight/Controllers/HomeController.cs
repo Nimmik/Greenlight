@@ -141,7 +141,7 @@ namespace GreenLight.Controllers
             {
                 return new HttpUnauthorizedResult();
             }
-            else if (ModelState.IsValid)
+            else if (ModelState.IsValid && unitOfWork.Repository<Vote>().Count(m => m.VoterId == vote.VoterId) == 0)
             {
                 vote.VoterId = User.Identity.GetUserId();
                 unitOfWork.Repository<Vote>().Insert(vote);

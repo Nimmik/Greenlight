@@ -48,7 +48,7 @@ namespace GreenLight.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(Request.RawUrl);
+                    return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
