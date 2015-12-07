@@ -21,9 +21,7 @@
                 <td class="deleteCommentColumn">
                     @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(c.CreatedById))
                     {
-                        <div class="deleteComment">
-                            <button type="button" class="btn btn-danger" data-commentid="@c.Id">댓글 삭제</button>
-                        </div>
+                        <button type="button" class="btn btn-danger deleteComment" data-commentid="@c.Id">댓글 삭제</button>
                     }
                 </td>
             </tr>
