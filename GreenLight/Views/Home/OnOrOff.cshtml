@@ -26,10 +26,10 @@
                 <div class="card-content @(p.Result==null?"":(bool)(p.Result)?"on":"off")">
                     <a href="@Url.Action("Detail", "Home", new {id = p.Id })" class="black-font">
                         <h4 class="postTitle">@p.Title</h4>
-                        <hr />
+                        @*<hr />*@
                         <ul>
                             <li>
-                                요약 내용 : @Html.DisplayFor(a => p.DescriptionShort)
+                                줄거리 : @Html.DisplayFor(a => p.DescriptionShort)
                             </li>
                             <li>
                                 조회수 : @Html.DisplayFor(a => p.Views)
