@@ -41,6 +41,18 @@ div .deleteButton {
   bottom: 10px;
   right: 15px;
 }
+@media (max-width: 992px) {
+  div .deleteComment button {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+  }
+}
+a.black-font {
+  color: black;
+  text-decoration: none;
+}
 hr {
   height: 12px;
   border: 0;
@@ -52,6 +64,7 @@ ul {
   margin-bottom: 10px;
   list-style-type: none;
   padding-left: 20px;
+  padding-right: 10px;
 }
 .validation-summary {
   padding: 1px 20px;
@@ -82,12 +95,22 @@ table.commentSection {
 td.deleteCommentColumn {
   width: 67px;
 }
+@media (max-width: 992px) {
+  td.deleteCommentColumn {
+    width: 40px;
+  }
+}
 td.writingColumn {
   word-break: break-word;
   width: inherit;
 }
 td.userIcon {
   width: 140px;
+}
+@media (max-width: 992px) {
+  td.userIcon {
+    width: 40px;
+  }
 }
 .likeInfo {
   font-size: smaller;
@@ -98,7 +121,7 @@ td.userIcon {
   margin-top: 10px;
   padding: 0;
 }
-#custom-search-input .search-query {
+#custom-search-input #search {
   padding-right: 3px;
   padding-right: 4px \9;
   padding-left: 3px;
@@ -115,7 +138,7 @@ td.userIcon {
   /** belows styles are working good */
   padding: 2px 5px;
   margin-top: 2px;
-  position: relative;
+  position: absolute;
   left: -28px;
   /* IE7-8 doesn't have border-radius, so don't indent the padding */
   margin-bottom: 0;
@@ -124,6 +147,6 @@ td.userIcon {
   border-radius: 3px;
   color: #D9230F;
 }
-.search-query:focus + button {
+.search:focus + button {
   z-index: 3;
 }

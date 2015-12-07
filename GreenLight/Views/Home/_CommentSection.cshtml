@@ -1,4 +1,5 @@
 ﻿@using GreenLight.Models
+@using Microsoft.AspNet.Identity
 @model IEnumerable<GreenLight.Models.Comment>
 
 @Html.Partial("_AddComment",new Comment(ViewBag.postId))
@@ -9,7 +10,7 @@
         {
             <tr>
                 <td class="userIcon">
-                    Picture
+                    Picture @Html.DisplayFor(a => c.CreatedBy.UserName)
                 </td>
                 <td class="writingColumn">
                     <div class="writingDiv">
@@ -18,7 +19,7 @@
                     </div>
                 </td>
                 <td class="deleteCommentColumn">
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(c.CreatedById))
                     {
                         <div class="deleteComment">
                             <button type="button" class="btn btn-danger" data-commentid="@c.Id">댓글 삭제</button>

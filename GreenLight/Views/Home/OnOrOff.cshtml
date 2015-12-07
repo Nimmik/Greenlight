@@ -11,22 +11,20 @@
         {
             <h2>@ViewBag.Title</h2>
             <div class="nav-wrapper" id="custom-search-input">
-                <div class="input-field">
-                    <input id="search" class="form-control" type="search" name="query" placeholder="검색">
-                    <span class="input-group-btn">
-                        <button class="btn btn-danger" type="button">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                </div>
+                <input id="search" class="form-control input-group" type="search" name="query" placeholder="검색">
+                <span class="input-group-btn">
+                    <button class="btn btn-danger" type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
             </div>
         }
 
         <div class="postpage">
             @foreach (var p in Model)
             {
-                <a href="@Url.Action("Detail", "Home", new {id = p.Id })">
-                    <div class="card-content black-text @(p.Result==null?"":(bool)(p.Result)?"on":"off")">
+                <div class="card-content @(p.Result==null?"":(bool)(p.Result)?"on":"off")">
+                    <a href="@Url.Action("Detail", "Home", new {id = p.Id })" class="black-font">
                         <h4 class="postTitle">@p.Title</h4>
                         <hr />
                         <ul>
@@ -43,21 +41,13 @@
                                 @Html.ActionLink("삭제", "Delete", "Home", new { PostId = p.Id }, new { onclick = "return confirm('Are you sure you wish to delete this?');", @class = "btn btn-danger btn-sm" })
                             </div>
                         }
-                    </div>
-                </a>
+                    </a>
+                </div>
             }
         </div>
         <hr />
         @Html.ActionLink("글쓰기", "Create", "Home", null, new { @class = "btn btn-info", role = "button" })
     </div>
-    @*<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-        <div class="side-bar-top">
-            <p>@User.Identity.GetUserName()</p>
-        </div>
-        <hr />
-        <div class="side-bar-bottom">
-            <p>bottom</p>
-        </div>
-    </div>*@
 </div>
 <div class="clearfix"></div>
+
