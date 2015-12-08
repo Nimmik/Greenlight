@@ -10,48 +10,20 @@ body{
 div{
     position:relative;
 
-    .input-group{
+    &.input-group{
         width:100%;
     }
 
-    .detailTitle{
+    &.detailTitle{
         margin-top : -20px;
     }
 
-    .writingDiv{
+    &.writingDiv{
         padding-left: 10px;
         padding-right: 10px;
     }
-
-    .card-content {
-        margin-top: 10px;
-        color : black;
-        background-color:#F4F7FF;
-        box-shadow: 2px 2px 10px #888888;
-        margin-left : 10px;
-        margin-right: 10px;
-        width : 20vw;
-        height : 200px;
-        display: inline-block;
-        @media (max-width: 992px){
-            width : 100%;
-        }
-    }
-
-    .on {
-        background-color: #99FF95;
-    }
-    .off{
-        background-color: #FF9ABC;
-    }
-
-    .deleteButton{
-        position:absolute;
-        bottom:10px;
-        right:15px;
-    }
-
-    .deleteComment button{
+    
+    &.deleteComment button{
         @media (max-width: 992px){
             padding: 5px 10px;
             font-size: 12px;
@@ -79,6 +51,42 @@ ul{
     list-style-type:none;
     padding-left:20px;
     padding-right:10px;
+
+    &.postpage{
+        display:table;
+        table-layout:fixed;
+        width:100%;
+    }
+
+    li{
+        &.card-content {
+            margin: 10px;
+            color : black;
+            background-color:#F8F8FF;
+            box-shadow: 2px 2px 10px #888888;
+            width : 30%;
+            height : 200px;
+            display: inline-block;
+            position:relative;
+            @media (max-width: 992px){
+                width : 100%;
+            }
+        }
+
+        &.on {        
+            box-shadow: 3px 3px 30px #99FF95;
+        }
+
+        &.off{        
+            box-shadow: 3px 3px 30px #FF9ABC;
+        }
+
+        .deleteButton{
+            position:absolute;
+            bottom:10px;
+            right:15px;
+        }
+    }
 }
 
 .validation-summary {
@@ -114,22 +122,24 @@ table.commentSection{
     box-shadow: 2px 2px 2px #888888;
 }
 
-td.deleteCommentColumn{
-    width:67px;
-    @media (max-width: 992px){
-        width : 40px;
+td{
+    &.deleteCommentColumn{
+        width:67px;
+        @media (max-width: 992px){
+            width : 40px;
+        }
     }
-}
 
-td.writingColumn{
-    word-break: break-word;
-    width: inherit;
-}
+    &.writingColumn{
+        word-break: break-word;
+        width: inherit;
+    }
 
-td.userIcon{
-    width : 140px;    
-    @media (max-width: 992px){
-        width : 40px;
+    &.userIcon{
+        width : 140px;    
+        @media (max-width: 992px){
+            width : 40px;
+        }
     }
 }
 
@@ -142,6 +152,7 @@ td.userIcon{
         margin:0;
         margin-top: 10px;
         padding: 0;
+        position:relative;
     }
  
 #custom-search-input #search {
@@ -155,6 +166,7 @@ td.userIcon{
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+    position:relative;
 }
  
 #custom-search-input button {
@@ -173,6 +185,6 @@ td.userIcon{
     color:#D9230F;
 }
  
-.search:focus + button {
+#search:focus + button {
     z-index: 3;   
 }

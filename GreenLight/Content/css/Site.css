@@ -4,45 +4,18 @@
 div {
   position: relative;
 }
-div .input-group {
+div.input-group {
   width: 100%;
 }
-div .detailTitle {
+div.detailTitle {
   margin-top: -20px;
 }
-div .writingDiv {
+div.writingDiv {
   padding-left: 10px;
   padding-right: 10px;
 }
-div .card-content {
-  margin-top: 10px;
-  color: black;
-  background-color: #F4F7FF;
-  box-shadow: 2px 2px 10px #888888;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 20vw;
-  height: 200px;
-  display: inline-block;
-}
 @media (max-width: 992px) {
-  div .card-content {
-    width: 100%;
-  }
-}
-div .on {
-  background-color: #99FF95;
-}
-div .off {
-  background-color: #FF9ABC;
-}
-div .deleteButton {
-  position: absolute;
-  bottom: 10px;
-  right: 15px;
-}
-@media (max-width: 992px) {
-  div .deleteComment button {
+  div.deleteComment button {
     padding: 5px 10px;
     font-size: 12px;
     line-height: 1.5;
@@ -65,6 +38,37 @@ ul {
   list-style-type: none;
   padding-left: 20px;
   padding-right: 10px;
+}
+ul.postpage {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+ul li.card-content {
+  margin: 10px;
+  color: black;
+  background-color: #F8F8FF;
+  box-shadow: 2px 2px 10px #888888;
+  width: 30%;
+  height: 200px;
+  display: inline-block;
+  position: relative;
+}
+@media (max-width: 992px) {
+  ul li.card-content {
+    width: 100%;
+  }
+}
+ul li.on {
+  box-shadow: 3px 3px 30px #99FF95;
+}
+ul li.off {
+  box-shadow: 3px 3px 30px #FF9ABC;
+}
+ul li .deleteButton {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
 }
 .validation-summary {
   padding: 1px 20px;
@@ -121,6 +125,7 @@ td.userIcon {
   margin: 0;
   margin-top: 10px;
   padding: 0;
+  position: relative;
 }
 #custom-search-input #search {
   padding-right: 3px;
@@ -132,6 +137,7 @@ td.userIcon {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  position: relative;
 }
 #custom-search-input button {
   border: 0;
@@ -148,6 +154,6 @@ td.userIcon {
   border-radius: 3px;
   color: #D9230F;
 }
-.search:focus + button {
+#search:focus + button {
   z-index: 3;
 }

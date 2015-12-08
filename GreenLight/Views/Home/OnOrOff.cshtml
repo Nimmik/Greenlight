@@ -20,34 +20,44 @@
             </div>
         }
 
-        <div class="postpage">
+        <ul class="postpage">
             @foreach (var p in Model)
             {
-                <div class="card-content @(p.Result==null?"":(bool)(p.Result)?"on":"off")">
-                    <a href="@Url.Action("Detail", "Home", new {id = p.Id })" class="black-font">
-                        <h4 class="postTitle">@p.Title</h4>
-                        @*<hr />*@
-                        <ul>
-                            <li>
-                                줄거리 : @Html.DisplayFor(a => p.DescriptionShort)
-                            </li>
-                            <li>
-                                조회수 : @Html.DisplayFor(a => p.Views)
-                            </li>
-                        </ul>
-                        @if (!User.Identity.GetUserId().IsEmpty() && User.Identity.GetUserId().Equals(p.PostedById))
-                        {
-                            <div class="deleteButton">
-                                @Html.ActionLink("삭제", "Delete", "Home", new { PostId = p.Id }, new { onclick = "return confirm('Are you sure you wish to delete this?');", @class = "btn btn-danger btn-sm" })
-                            </div>
-                        }
-                    </a>
-                </div>
+                <li class="card-content @(p.Result==null?"":(bool)(p.Result)?"on":"off")">
+                    <h4 class="postTitle">@p.Title</h4>
+                    @*<hr />*@
+                    <ul>
+                        <li>
+                            줄거리 : @Html.DisplayFor(a => p.DescriptionShort)
+                        </li>
+                        <li>
+                            조회수 : @Html.DisplayFor(a => p.Views)
+                        </li>
+                    </ul>
+                    @if (!User.Identity.GetUserId().IsEmpty() && User.Identity.GetUserId().Equals(p.PostedById))
+                    {
+                        <span class="deleteButton">
+                            @Html.ActionLink("삭제", "Delete", "Home", new { PostId = p.Id }, new { onclick = "return confirm('Are you sure you wish to delete this?');", @class = "btn btn-danger btn-sm" })
+                        </span>
+                    }
+                </li>
             }
-        </div>
+        </ul>
         <hr />
         @Html.ActionLink("글쓰기", "Create", "Home", null, new { @class = "btn btn-info", role = "button" })
     </div>
 </div>
-<div class="clearfix"></div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".card-content").mouseenter(function () {
+                $(this).animate({
+                    
+                });
+            });
+        });
+    </script>
+}
 
