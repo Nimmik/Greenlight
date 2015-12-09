@@ -23,23 +23,30 @@
         <ul class="postpage">
             @foreach (var p in Model)
             {
-                <li class="card-content @(p.Result==null?"":(bool)(p.Result)?"on":"off")">
-                    <h4 class="postTitle">@p.Title</h4>
-                    @*<hr />*@
-                    <ul>
-                        <li>
-                            줄거리 : @Html.DisplayFor(a => p.DescriptionShort)
-                        </li>
-                        <li>
-                            조회수 : @Html.DisplayFor(a => p.Views)
-                        </li>
-                    </ul>
-                    @if (!User.Identity.GetUserId().IsEmpty() && User.Identity.GetUserId().Equals(p.PostedById))
-                    {
-                        <span class="deleteButton">
-                            @Html.ActionLink("삭제", "Delete", "Home", new { PostId = p.Id }, new { onclick = "return confirm('Are you sure you wish to delete this?');", @class = "btn btn-danger btn-sm" })
-                        </span>
-                    }
+                <li class="postList">
+                    <div class="card-content @(p.Result==null?"":(bool)(p.Result)?"on":"off") hvrbox hvrbox_background">
+                        <h4 class="postTitle">@p.Title</h4>
+                        @*<hr />*@
+                        <ul>
+                            <li class="card-descript">
+                                줄거리 : @Html.DisplayFor(a => p.DescriptionShort)
+                            </li>
+                            <li>
+                                조회수 : @Html.DisplayFor(a => p.Views)
+                            </li>
+                        </ul>
+                        @if (!User.Identity.GetUserId().IsEmpty() && User.Identity.GetUserId().Equals(p.PostedById))
+                        {
+                            <span class="deleteButton">
+                                @Html.ActionLink("삭제", "Delete", "Home", new { PostId = p.Id }, new { onclick = "return confirm('Are you sure you wish to delete this?');", @class = "btn btn-danger btn-sm" })
+                            </span>
+                        }
+                        <div class="hvrbox-layer_top">
+                            <div class="hvrbox-text">
+                                투표 현황: 몰라
+                            </div>
+                        </div>
+                    </div>                    
                 </li>
             }
         </ul>
