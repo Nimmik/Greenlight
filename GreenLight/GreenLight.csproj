@@ -813,6 +813,8 @@
     <Content Include="Views\Home\_AddComment.cshtml" />
     <Content Include="Views\Home\_Poll.cshtml" />
     <Content Include="Views\Home\_PollSection.cshtml" />
+    <Content Include="Views\Home\_CardHover.cshtml" />
+    <Content Include="Views\Home\_EditPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

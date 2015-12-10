@@ -1,0 +1,36 @@
+﻿@model GreenLight.Models.Post
+
+@{
+    ViewBag.Title = "Edit";
+    var result = Model.Result;
+}
+<div class="form-horizontal editPage">
+    @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { id = "editForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.PostedById)
+        @Html.HiddenFor(m => m.CreatedOn)
+        @Html.HiddenFor(m => m.Views)
+        <div class="detailTitle">
+            <input type="text" name="Title" value="@Model.Title" class="form-control postTitleInput" />
+            <div class="titleDescript">
+                <p class="pull-left details">
+                    조회수 : @Html.DisplayFor(model => model.Views)
+                    신호등 :
+                </p>
+                <select class="form-control resultSelect pull-left" name="Result">
+                    <option value="null">라이트를 켜주세요</option>
+                    <option value="true" @(result == null ? "" : (bool)result ? "selected" : "")>그린라이트</option>
+                    <option value="false" @(result == null ? "" : (bool)result ? "" : "selected")>레드라이트</option>
+                </select>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="description">
+            <h4>이야기</h4>
+            <textarea name="Description" rows="10" class="form-control descriptionEdit">@Model.Description</textarea>
+        </div>
+    }
+</div>

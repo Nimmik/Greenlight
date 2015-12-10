@@ -1,16 +1,25 @@
 ﻿@model GreenLight.Models.Post
+@using Microsoft.AspNet.Identity;
 
 <div class="col-xs-12">
-    <div class="detailTitle">
-        <h3>@Html.DisplayFor(model => model.Title)</h3>
-        <span>조회수 : @Html.DisplayFor(model => model.Views)</span>
-        <span>신호등 : @(Model.Result == null ? "켜지기 전" : Model.Result == true ? "그린라이트" : "레드라이트")</span>
-    </div>
-    <hr />
-    <div class="description">
-        <h4>이야기</h4>
-        <p>@Html.DisplayFor(model => model.Description)</p>
-
+    <div class="postInfoSection">
+        @if (User.Identity.GetUserId().Equals(Model.PostedById))
+        {
+            @Html.Partial("_EditPost", Model)
+        }
+        else
+        {
+            <div class="detailTitle">
+                <h3>@Html.DisplayFor(model => model.Title)</h3>
+                <span>조회수 : @Html.DisplayFor(model => model.Views)</span>
+                <span>신호등 : @(Model.Result == null ? "켜지기 전" : Model.Result == true ? "그린라이트" : "레드라이트")</span>
+            </div>
+            <hr />
+            <div class="description">
+                <h4>이야기</h4>
+                <p>@Html.DisplayFor(model => model.Description)</p>
+            </div>
+        }
     </div>
 
     <div class="panel-group" id="voteAndComments">
@@ -35,6 +44,7 @@
             </div>
             <div id="collapse2" class="panel-collapse collapse">
                 <div class="panel-body" id="PollSection">
+                    @{ViewBag.postedById = Model.PostedById;}
                     @Html.Partial("_PollSection", Model.Votes)
                 </div>
             </div>
@@ -42,8 +52,8 @@
     </div>
 
         <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
-            @Html.ActionLink("Back to List", "OnOrOff")
+            <input type="submit" value="수정" form="editForm" class="btn btn-info" />
+            <button class="btn btn-info">@Html.ActionLink("Back to List", "OnOrOff","", new { @class = "white-font" })</button>
         </p>
     </div>
 
@@ -58,10 +68,11 @@
             $('input#Writing').attr('value', '');
             bindComment();
             bindPoll();
+            bindEdit();
         }
 
         function bindComment() {
-            console.log("bind");
+            console.log("bindComment");
             $("#commentForm").ajaxForm({
                 target: "#CommentSection",
                 success: function () {
@@ -71,13 +82,20 @@
         }
 
         function bindPoll() {
-            console.log("bind");
+            console.log("bindPoll");
             $("#voteForm").ajaxForm({
-                target: "#PollSection",
+                target: "#PollSection"
+            })
+        }
+
+        function bindEdit() {
+            console.log("bindEdit");
+            $("#editForm").ajaxForm({
+                target: "#postInfoSection",
                 success: function () {
                     bindAll();
                 }
-            })
+            });
         }
 
         $(document).on("click", ".deleteComment", function() {

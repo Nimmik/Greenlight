@@ -78,6 +78,15 @@ namespace GreenLight.Controllers
             return View("OnOrOff", posts);
         }
 
+        public ActionResult UpdateResult(int postId, bool? result)
+        {
+            var post = unitOfWork.Repository<Post>().GetByID(postId);
+            post.Result = result;
+            unitOfWork.Repository<Post>().Update(post);
+            unitOfWork.Save();
+            return RedirectToAction("OnOrOff", "Home");
+        }
+
         //Detail Page
         public ActionResult Detail(int id)
         {
@@ -87,6 +96,13 @@ namespace GreenLight.Controllers
             unitOfWork.Repository<Post>().Update(post);
             unitOfWork.Save();
             return View(post);
+        }
+
+        public ActionResult Edit(Post post)
+        {
+            unitOfWork.Repository<Post>().Update(post);
+            unitOfWork.Save();
+            return PartialView("_EditPost", post);
         }
         
         //_Comment

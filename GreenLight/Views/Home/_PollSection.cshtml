@@ -14,7 +14,7 @@
     </p>
 
 }
-else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)))
+else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)) || User.Identity.GetUserId().Equals(ViewBag.postedById))
 {
     <div class="voteResult" id="pollResult">
         <p>

@@ -24,7 +24,7 @@
             @foreach (var p in Model)
             {
                 <li class="postList">
-                    <div class="card-content @(p.Result==null?"":(bool)(p.Result)?"on":"off") hvrbox hvrbox_background">
+                    <div class="card-content @(p.Result == null ? "" : (bool)(p.Result) ? "on" : "off") hvrbox hvrbox_background">
                         <h4 class="postTitle">@p.Title</h4>
                         @*<hr />*@
                         <ul>
@@ -41,11 +41,9 @@
                                 @Html.ActionLink("삭제", "Delete", "Home", new { PostId = p.Id }, new { onclick = "return confirm('Are you sure you wish to delete this?');", @class = "btn btn-danger btn-sm" })
                             </span>
                         }
-                        <div class="hvrbox-layer_top">
-                            <div class="hvrbox-text">
-                                투표 현황: 몰라
-                            </div>
-                        </div>
+                        <a href="@Url.Action("Detail", "Home", new { id = p.Id })" class="hvrbox-layer_top">
+                             @Html.Partial("_CardHover", p.Votes, new ViewDataDictionary {{ "postedbById", p.PostedById }, { "postID", p.Id }})
+                        </a>
                     </div>                    
                 </li>
             }
@@ -58,13 +56,6 @@
 @section scripts
 {
     <script>
-        $(document).ready(function () {
-            $(".card-content").mouseenter(function () {
-                $(this).animate({
-                    
-                });
-            });
-        });
     </script>
 }
 

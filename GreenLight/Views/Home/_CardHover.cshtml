@@ -1,0 +1,94 @@
+﻿@using GreenLight.Models
+@using Microsoft.AspNet.Identity;
+@model IEnumerable<GreenLight.Models.Vote>
+
+@{
+    double yes = Model.Count(v => v.OnOff == true);
+    double no = Model.Count(v => v.OnOff == false);
+    double allVotes = yes + no;
+    double yesPercent;
+    double noPercent;
+    var postedbById = Convert.ToString(ViewData["postedbById"]);
+    var postid = Convert.ToInt32(ViewData["postID"]);
+
+    if (allVotes == 0)
+    {
+        yesPercent = 0;
+        noPercent = 0;
+    }
+    else
+    {
+        yesPercent = Math.Round(yes / allVotes * 100 , 1);
+        noPercent = Math.Round(no / allVotes * 100, 1);
+    }
+}
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="hvrbox-text">
+        <p>
+            사연 읽어보러 들어가기
+        </p>
+
+        <p>
+            투표 및 댓글을 쓰려면 로그인을 하셔야 합니다.
+        </p>
+    </div>
+}
+else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)) || User.Identity.GetUserId().Equals(postedbById))
+{
+    using (Html.BeginForm("UpdateResult", "Home", FormMethod.Post, new { id = "resultForm" }))
+    {
+        @Html.HiddenFor(v => postid)
+        <div class="light-toggle">
+            <button type="submit" value="false" name="Result" class="resultFalse btn"></button>
+            <button type="submit" value="null" name="Result" class="resultNone btn"></button>
+            <button type="submit" value="true" name="Result" class="resultTrue btn"></button>
+        </div>
+    }
+    <div class="hvrbox-text">
+        <p>
+            그린라이트 : @Html.DisplayFor(a => yesPercent) %
+        </p>
+        <p>
+            레드라이트 : @Html.DisplayFor(a => noPercent) %
+        </p>
+    </div>
+}
+else
+{
+    if (allVotes == 0)
+    {
+        <div class="hvrbox-text">
+            <p>
+                아직 아무도 투표를 하지 않았습니다.
+            </p>
+            <p>
+                당신이 투표를 시작해 보세요!
+            </p>
+        </div>
+    }
+    else if (allVotes == 1)
+    {
+        <div class="hvrbox-text">
+            <p>
+                한명의 사람이 투표를 하였습니다.
+            </p>
+            <p>
+                당신도 투표에 참여해 보세요!
+            </p>
+        </div>
+    }
+    else
+    {
+        <div class="hvrbox-text">
+            <p>
+                총 @allVotes 명의 사람들이 투표하였습니다.
+            </p>
+            <p>
+                당신도 투표에 참여해 보세요!
+            </p>
+        </div>
+    }
+}
+

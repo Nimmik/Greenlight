@@ -33,9 +33,15 @@ div{
     }
 }
 
-a.black-font{
-    color: black;
-    text-decoration: none;
+a{
+    &.black-font{
+        color: black;
+        text-decoration: none;
+    }
+    &.white-font{
+        color:white;
+        text-decoration:none;
+    }
 }
 
 hr{
@@ -160,6 +166,7 @@ td{
     padding-top : 4em;
 }
 
+//Search Box (doesn't really work right now)
 #custom-search-input {
         margin:0;
         margin-top: 10px;
@@ -202,6 +209,7 @@ td{
     z-index: 3;   
 }
 
+//Cover Card CSS
 .hvrbox,
 .hvrbox * {
 	box-sizing: border-box;
@@ -229,7 +237,7 @@ td{
 	bottom: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.9);
 	color: #fff;
 	padding: 15px;
 	-moz-transition: all 0.4s ease-in-out 0s;
@@ -252,4 +260,73 @@ td{
 	-webkit-transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
+}
+
+#resultForm{
+    float:right;
+    right: 15px;
+    top: 10px;
+    width:50px;
+    height:10px;
+    position:relative;
+
+    button{
+        float:right;
+        height:10px;
+        width:30%;
+        padding:0;
+
+        &.resultFalse{
+            background-color:red;
+        }
+        &.resultNone{
+            background-color:white;
+        }
+        &.resultTrue{
+            background-color:green;
+        }
+    }
+}
+
+//for Edit Page
+.editPage{
+    .postTitleInput{
+        display: block;
+        font-size: 2em;
+        margin-top: 1em;
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: bold;
+        height:auto;
+        border:none;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: none 1px 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+    .postTitleInput:focus{
+          border-color: #66afe9;
+          outline: 0;
+          -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    }
+    .resultSelect{
+        width:170px;
+        height:30px;
+        font-size:12px;
+        padding-top:-20px;
+        padding-bottom:-20px;
+        margin:0;
+        border:none;
+    }
+    .detailTitle{
+        margin-bottom:20px;
+    }
+    .details{
+        margin-top:5px;
+    }
+    .titleDescript{
+        margin-top:6px;
+    }
 }
