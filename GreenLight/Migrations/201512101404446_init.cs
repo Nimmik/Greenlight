@@ -3,7 +3,7 @@ namespace GreenLight.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -90,7 +90,6 @@ namespace GreenLight.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        CreatedOn = c.DateTime(nullable: false),
                         VoterId = c.String(maxLength: 128),
                         PostId = c.Int(nullable: false),
                         OnOff = c.Boolean(nullable: false),

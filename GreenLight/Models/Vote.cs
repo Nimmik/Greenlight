@@ -29,7 +29,7 @@ namespace GreenLight.Models
 
         public int PostId { get; set; }
         [ForeignKey("PostId")]
-        public Post Post { get; set; }
+        public virtual Post Post { get; set; }
 
         public bool OnOff { get; set; }
     }

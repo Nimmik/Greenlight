@@ -91,8 +91,7 @@ namespace GreenLight.Migrations
                 {
                     Id = 1,
                     VoterId = userManager.FindByEmail("admin@t.t").Id,
-                    Voter = userManager.FindByEmail("admin@t.t"),
-                    Post = context.Posts.Find(1),
+                    PostId = 1,
                     OnOff = true
                 }
             );

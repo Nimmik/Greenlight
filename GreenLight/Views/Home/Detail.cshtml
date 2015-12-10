@@ -3,7 +3,7 @@
 
 <div class="col-xs-12">
     <div class="postInfoSection">
-        @if (User.Identity.GetUserId().Equals(Model.PostedById))
+        @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(Model.PostedById))
         {
             @Html.Partial("_EditPost", Model)
         }
@@ -84,7 +84,10 @@
         function bindPoll() {
             console.log("bindPoll");
             $("#voteForm").ajaxForm({
-                target: "#PollSection"
+                target: "#PollSection",
+                success: function () {
+                    bindAll();
+                }
             })
         }
 
