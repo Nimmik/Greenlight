@@ -25,7 +25,7 @@
             {
                 <li class="postList">
                     <div class="card-content @(p.Result == null ? "" : (bool)(p.Result) ? "on" : "off") hvrbox hvrbox_background">
-                        <h4 class="postTitle">@p.Title</h4>
+                        <div class="postTitle"><h4>@p.Title</h4><span class="postTime">@p.CreatedOn.Date.ToString("yyyy/MM/dd")</span></div>
                         @*<hr />*@
                         <ul>
                             <li class="card-descript">
@@ -41,7 +41,7 @@
                                 @Html.ActionLink("삭제", "Delete", "Home", new { PostId = p.Id }, new { onclick = "return confirm('Are you sure you wish to delete this?');", @class = "btn btn-danger btn-sm" })
                             </span>
                         }
-                        <a href="@Url.Action("Detail", "Home", new { id = p.Id })" class="hvrbox-layer_top">
+                        <a href="@Url.Action("Detail", "Home", new { id = p.Id })" class="hvrbox-layer_top white-font">
                              @Html.Partial("_CardHover", p.Votes, new ViewDataDictionary {{ "postedbById", p.PostedById }, { "postID", p.Id }})
                         </a>
                     </div>                    
@@ -56,6 +56,12 @@
 @section scripts
 {
     <script>
+        $(document).ready(function () {
+            $('.horizontal .progress-fill span').each(function () {
+                var percent = $(this).html();
+                $(this).parent().css('width', percent);
+            });
+        });
     </script>
 }
 

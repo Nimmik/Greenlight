@@ -17,7 +17,7 @@
             <hr />
             <div class="description">
                 <h4>이야기</h4>
-                <p>@Html.DisplayFor(model => model.Description)</p>
+                <textarea readonly rows="10" class="noAuthText">@Html.DisplayFor(model => model.Description)</textarea>
             </div>
         }
     </div>
@@ -50,12 +50,14 @@
             </div>
         </div>
     </div>
-
-        <p>
-            <input type="submit" value="수정" form="editForm" class="btn btn-info" />
-            <button class="btn btn-info">@Html.ActionLink("Back to List", "OnOrOff","", new { @class = "white-font" })</button>
-        </p>
+    <div>
+        <button class="btn btn-info">@Html.ActionLink("Back to List", "OnOrOff","", new { @class = "white-font" })</button>
+        @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(Model.PostedById))
+        {
+            <input type="submit" value="수정" form="editForm" class="btn btn-info pull-right" />
+        }
     </div>
+</div>
 
 @section scripts
 {
@@ -84,10 +86,7 @@
         function bindPoll() {
             console.log("bindPoll");
             $("#voteForm").ajaxForm({
-                target: "#PollSection",
-                success: function () {
-                    bindAll();
-                }
+                target: "#PollSection"
             })
         }
 

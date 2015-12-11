@@ -37,22 +37,46 @@
 }
 else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)) || User.Identity.GetUserId().Equals(postedbById))
 {
-    using (Html.BeginForm("UpdateResult", "Home", FormMethod.Post, new { id = "resultForm" }))
-    {
-        @Html.HiddenFor(v => postid)
-        <div class="light-toggle">
-            <button type="submit" value="false" name="Result" class="resultFalse btn"></button>
-            <button type="submit" value="null" name="Result" class="resultNone btn"></button>
-            <button type="submit" value="true" name="Result" class="resultTrue btn"></button>
-        </div>
+    if (User.Identity.GetUserId().Equals(postedbById)) {
+        using (Html.BeginForm("UpdateResult", "Home", FormMethod.Post, new { id = "resultForm" }))
+        {
+            @Html.HiddenFor(v => postid)
+            <div class="light-toggle">
+                <button type="submit" value="false" name="Result" class="resultFalse btn"></button>
+                <button type="submit" value="null" name="Result" class="resultNone btn"></button>
+                <button type="submit" value="true" name="Result" class="resultTrue btn"></button>
+            </div>
+        }
     }
-    <div class="hvrbox-text">
-        <p>
-            그린라이트 : @Html.DisplayFor(a => yesPercent) %
-        </p>
-        <p>
-            레드라이트 : @Html.DisplayFor(a => noPercent) %
-        </p>
+    else
+    {
+        <span>이미 투표 하셨습니다</span>
+    }
+    
+    <div class="hvrbox-graph">        
+        <div><span class="graphName">그린라이트 : </span>
+            <div class="horizontal">
+                <div class="progress-bar">
+                    <div class="progress-track">
+                        <div class="progress-fill">
+                            <span>@(Html.DisplayFor(a => yesPercent))%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div>
+            <span class="graphName">레드라이트 : </span>
+            <div class="horizontal">
+                <div class="progress-bar">
+                    <div class="progress-track">
+                        <div class="progress-fill">
+                            <span>@(Html.DisplayFor(a => noPercent))%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 }
 else
@@ -91,4 +115,3 @@ else
         </div>
     }
 }
-
