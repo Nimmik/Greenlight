@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<GreenLight.Models.ApplicationUser>
 
+@{ 
+    ViewBag.Title = "랭킹";
+}
+
 @foreach(var u in Model)
 {
     @u.Votes.Count;

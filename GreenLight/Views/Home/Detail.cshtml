@@ -1,6 +1,10 @@
 ﻿@model GreenLight.Models.Post
 @using Microsoft.AspNet.Identity;
 
+@{ 
+    ViewBag.Title = Model.Title;
+}
+
 <div class="col-xs-12">
     <div class="postInfoSection">
         @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(Model.PostedById))

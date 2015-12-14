@@ -1,7 +1,28 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "어서오세요 불빛들이여";
 }
 
-<div class="jumbotron">
-    Start New
+<div class="index-background">
+    <div class="index-context">
+        <h2>그린라이트</h2>
+        <table>
+            <tr>
+                <td class="index-col"><div class="index-button">이야기마당(?)</div></td>
+                <td class="index-col"><div class="index-button">나의고민</div></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="index-col-2"><div class="index-button">로그인 / 회원가입</div></td>
+            </tr>
+        </table>
+    </div>
+    
 </div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('.navbar').hide();
+        });
+    </script>
+}
