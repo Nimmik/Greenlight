@@ -3,7 +3,7 @@
 @if (!User.Identity.IsAuthenticated)
 {
     <input type="text" class="Require-login form-control" value="댓글을 입력하기 위해서 로그인을 해 주세요" readonly />
-    <button class="btn btn-default" type="button">@Html.ActionLink("로그인", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</button>
+    <button class="btn btn-default" type="button">@Html.ActionLink("로그인", "Login", "Account", routeValues: new { returnUrl = Request.Url.PathAndQuery }, htmlAttributes: new { id = "loginLink" })</button>
 }
 
 else

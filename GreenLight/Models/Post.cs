@@ -18,6 +18,7 @@ namespace GreenLight.Models
         [Key]
         public int Id { get; set; }
         public string Title { get; set; }
+        public string TitleShort { get { return this.Title.Length < 30 ? this.Title : this.Title.Substring(0, 30) + "..."; } }
         public string Description { get; set; }
         public string DescriptionShort { get { return this.Description.Length < 80 ? this.Description : this.Description.Substring(0, 80) + "..."; } }
         public DateTime CreatedOn { get; set; }

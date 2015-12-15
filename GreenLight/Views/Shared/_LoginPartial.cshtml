@@ -1,7 +1,11 @@
 ﻿@using Microsoft.AspNet.Identity
+@{ 
+    string returnUrl = Request.Url.PathAndQuery;
+}
+
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", new { returnUrl = Request.Url.PathAndQuery } ,FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
 
@@ -16,7 +20,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("등록", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("로그인", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("등록", "Register", "Account", null , htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("로그인", "Login", "Account", routeValues: new { ReturnUrl = returnUrl }, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }

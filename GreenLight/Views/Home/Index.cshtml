@@ -2,16 +2,40 @@
     ViewBag.Title = "어서오세요 불빛들이여";
 }
 
-<div class="index-background">
-    <div class="index-context">
+<div id="index-background">
+    <div id="index-context">
         <h2>그린라이트</h2>
         <table>
             <tr>
-                <td class="index-col"><div class="index-button">이야기마당(?)</div></td>
-                <td class="index-col"><div class="index-button">나의고민</div></td>
+                <td class="index-col">
+                    <div class="index-button">
+                        <a href="@Url.Action("OnorOff", "Home")" class="black-font index-link">
+                            <span class="index-text">
+                                <span class="index-inside-text">이야기들</span>
+                            </span>
+                        </a>
+                    </div>
+                </td>
+                <td class="index-col">
+                    <div class="index-button">
+                        <a href="@Url.Action("OnorOff", "Home")" class="black-font index-link">
+                            <span class="index-text">
+                                <span class="index-inside-text">고민들</span>
+                            </span>
+                        </a>
+                    </div>
+                </td>
             </tr>
-            <tr>
-                <td colspan="2" class="index-col-2"><div class="index-button">로그인 / 회원가입</div></td>
+            <tr>    
+                <td colspan="2" class="index-col-2">
+                    <div class="index-button">
+                        <a href="@Url.Action("Login", "Account", new { @returnUrl = HttpContext.Current.Request.RawUrl})" class="black-font index-link">
+                            <span class="index-text">
+                                <span class="index-inside-text-long">로그인 / 회원가입</span>
+                            </span>
+                        </a>
+                    </div>
+                </td>
             </tr>
         </table>
     </div>

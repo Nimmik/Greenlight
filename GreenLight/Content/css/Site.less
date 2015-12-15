@@ -8,12 +8,6 @@ body{
 }
 
 div{
-    position:relative;
-
-    &.input-group{
-        width:100%;
-    }
-
     &.detailTitle{
         margin-top : -20px;
     }
@@ -44,27 +38,16 @@ a{
     }
 }
 
-hr{
-    height: 12px;
-    border: 0;
-    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
-    margin-bottom : 0px;
-    margin-top:2px;
-}
-
-ul{
+ul.postpage{
     margin-bottom:10px;
     list-style-type:none;
     padding-left:20px;
     padding-right:10px;
-
-    &.postpage{
-        display:table;
-        table-layout:fixed;
-        width:100%;
-        margin-top:-20px;
-    }
-
+    display:table;
+    table-layout:fixed;
+    width:100%;
+    margin-top:-20px;
+    
     li{
         &.postList{
             display: inline-block;
@@ -155,22 +138,20 @@ table.commentSection{
     width:inherit;
     background-color:#F4F7FF;
     box-shadow: 2px 2px 2px #888888;
-}
 
-td{
-    &.deleteCommentColumn{
+    .deleteCommentColumn{
         width:67px;
         @media (max-width: 992px){
             width : 40px;
         }
     }
 
-    &.writingColumn{
+    .writingColumn{
         word-break: break-word;
         width: inherit;
     }
 
-    &.userIcon{
+    .userIcon{
         width : 140px;    
         @media (max-width: 992px){
             width : 40px;
@@ -183,7 +164,7 @@ td{
     padding-top : 4em;
 }
 
-//Search Box (doesn't really work right now)
+//Search Box
 #custom-search-input {
     margin:0;
     margin-top: 10px;
@@ -433,13 +414,14 @@ td{
     }
 }
 
-.index-background{
+//Index Page
+#index-background{
     width: 100vw;
 	height: 100vh;
     position:fixed;
     top:0;
     left:0;
-    .index-context{
+    #index-context{
         text-align:center;
         top:30%;
         position:relative;
@@ -448,17 +430,92 @@ td{
             position:relative;
             display:inline-block;
             margin-top:20px;
+            height:200px;
             
             .index-col{
                 width:150px;
                 height:150px;
+                padding:5px;
             }
             .index-col-2{
                 height:50px;
-            }
+                padding:5px;              
+                .index-link{
+                    padding-top:10px;
+                }
+            }            
             .index-button{
                 width:100%;
+                height:100%;
+                display:block;
                 text-align:center center;
+                padding:0;
+            }
+                        
+            .index-link{
+                margin:0;
+                padding-top:40%;
+                position:relative;
+                height:100%;
+                width:100%;
+                display:inline-block;
+                font-family:Arial, "Helvetica", sans-serif;
+                font-size:16px;
+                font-weight:bold;
+                color:#fff;
+                text-decoration:none;
+                text-transform:uppercase;
+                text-align:center;
+                text-shadow:1px 1px 0px #07526e;
+                position:relative;
+                cursor:pointer;
+                border: none;
+                background: #109bce;
+                border-radius: 5px;
+                box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #07526e, 0px 10px 5px #999;
+
+                background: #3498db;
+                background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+                background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+                background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+                background-image: -o-linear-gradient(top, #3498db, #2980b9);
+                background-image: linear-gradient(to bottom, #3498db, #2980b9);
+            }
+            .index-link:active{
+                top:3px;
+                box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e, 0px 5px 3px #999;
+            }
+
+            .index-text{
+                font-family: 'socialfont';
+                font-size: 16px;
+                line-height: 1em;
+                font-weight: normal;
+                text-align:center center;
+                color: #fff;
+                width:100%;
+                height:90%;
+                display:block;
+                position:absolute;
+                margin:0;
+                top:0;
+                text-shadow: 1px 1px 2px #07526e;
+                .index-inside-text{
+                    background-color:transparent;
+                    margin-top:55px;
+                    display:block;
+                }
+                .index-inside-text-long{
+                    background-color:transparent;
+                    margin-top:10px;
+                    display:block;
+                }
+            }
+            .index-text:active{
+                font-size: 16px;
+                text-shadow: 0px 3px 0px #07526e, 0px 5px 1px #07526e
+                /*, 3px 0px 1px #07526e, 3px 3px 1px #07526e,
+                    -2px 0px 1px #68cff2*/;
             }
         }
     }
