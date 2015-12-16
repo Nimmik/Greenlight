@@ -10,6 +10,7 @@
     double noPercent;
     var postedbById = Convert.ToString(ViewData["postedbById"]);
     var postid = Convert.ToInt32(ViewData["postID"]);
+    bool poster = User.Identity.GetUserId().Equals(postedbById);
 
     if (allVotes == 0)
     {
@@ -23,6 +24,7 @@
     }
 }
 
+@*anonymus user*@
 @if (!User.Identity.IsAuthenticated)
 {
     <div class="hvrbox-text">
@@ -35,9 +37,10 @@
         </p>
     </div>
 }
-else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)) || User.Identity.GetUserId().Equals(postedbById))
+//logged in user who voted or the poster.
+else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)) || poster)
 {
-    if (User.Identity.GetUserId().Equals(postedbById)) {
+    if (poster) {
         using (Html.BeginForm("UpdateResult", "Home", FormMethod.Post, new { id = "resultForm" }))
         {
             @Html.HiddenFor(v => postid)
@@ -87,6 +90,16 @@ else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)) || User.Ide
                 </div>
             </div>
         </div>
+    }
+    if (poster)
+    {
+        using (Html.BeginForm("Delete", "Home", FormMethod.Post, new { id = "deletePostForm" }))
+        {
+            @Html.HiddenFor(v => postid)
+            <div class="deleteButton">
+                <button type="submit" value="Delete Post" class="remove-button"><span class="glyphicon glyphicon-remove"></span></button>
+            </div>
+        }
     }
 }
 else

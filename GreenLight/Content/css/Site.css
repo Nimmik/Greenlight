@@ -266,6 +266,38 @@ table.commentSection .userIcon {
 #resultForm button.resultTrue {
   background-color: green;
 }
+#deletePostForm {
+  height: 30px;
+  width: 30px;
+  top: 5px;
+  left: 5px;
+  float: left;
+  position: relative;
+  border: 0;
+}
+#deletePostForm .deleteButton {
+  position: relative;
+  width: inherit;
+  height: inherit;
+  top: 0;
+  left: 0;
+  background: transparent;
+  border: 0;
+}
+#deletePostForm .deleteButton .remove-button {
+  background: transparent;
+  color: red;
+  height: 17px;
+  width: 17px;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  text-align: center center;
+}
+#deletePostForm .deleteButton .remove-button span {
+  margin: 0;
+  padding: 0;
+}
 .editPage .postTitleInput {
   display: block;
   font-size: 2em;

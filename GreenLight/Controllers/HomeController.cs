@@ -31,7 +31,7 @@ namespace GreenLight.Controllers
         {
             if (User.Identity.GetUserId() == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Account", new { returnUrl = "/Home/Create" });
             }
             return View();
         }
@@ -61,7 +61,7 @@ namespace GreenLight.Controllers
             }
             else if(User.Identity.IsAuthenticated && (User.Identity.GetUserId().Equals(model.PostedById)))
             { 
-                foreach(var c in model.Comments)
+                foreach(var c in model.Comments.ToList())
                 {
                     unitOfWork.Repository<Comment>().Delete(c.Id);
                 }

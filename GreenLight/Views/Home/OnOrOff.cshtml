@@ -36,12 +36,6 @@
                                 조회수 : @Html.DisplayFor(a => p.Views)
                             </li>
                         </ul>
-                        @if (!User.Identity.GetUserId().IsEmpty() && User.Identity.GetUserId().Equals(p.PostedById))
-                        {
-                            <span class="deleteButton">
-                                @Html.ActionLink("삭제", "Delete", "Home", new { PostId = p.Id }, new { onclick = "return confirm('Are you sure you wish to delete this?');", @class = "btn btn-danger btn-sm" })
-                            </span>
-                        }
                         <a href="@Url.Action("Detail", "Home", new { id = p.Id })" class="hvrbox-layer_top white-font">
                              @Html.Partial("_CardHover", p.Votes, new ViewDataDictionary {{ "postedbById", p.PostedById }, { "postID", p.Id }})
                         </a>
