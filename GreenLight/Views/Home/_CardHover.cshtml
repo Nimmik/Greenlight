@@ -10,7 +10,11 @@
     double noPercent;
     var postedbById = Convert.ToString(ViewData["postedbById"]);
     var postid = Convert.ToInt32(ViewData["postID"]);
-    bool poster = User.Identity.GetUserId().Equals(postedbById);
+    bool poster = false;
+    if(User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(postedbById))
+    {
+        poster = true;
+    }
 
     if (allVotes == 0)
     {
@@ -102,6 +106,7 @@ else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)) || poster)
         }
     }
 }
+//logged in user not the poster
 else
 {
     if (allVotes == 0)

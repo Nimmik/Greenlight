@@ -28,14 +28,12 @@
                     <div class="card-content @(p.Result == null ? "" : (bool)(p.Result) ? "on" : "off") hvrbox hvrbox_background">
                         <div class="postTitle"><h4>@p.TitleShort</h4><span class="postTime">@p.CreatedOn.Date.ToString("yyyy/MM/dd")</span></div>
                         @*<hr />*@
-                        <ul>
-                            <li class="card-descript">
-                                줄거리 : @Html.DisplayFor(a => p.DescriptionShort)
-                            </li>
-                            <li>
-                                조회수 : @Html.DisplayFor(a => p.Views)
-                            </li>
-                        </ul>
+                        <div class="card-inside">
+                            줄거리 : @Html.DisplayFor(a => p.DescriptionShort)
+                        </div>
+                        <div class="card-views">
+                            조회수 : @Html.DisplayFor(a => p.Views)
+                        </div>
                         <a href="@Url.Action("Detail", "Home", new { id = p.Id })" class="hvrbox-layer_top white-font">
                              @Html.Partial("_CardHover", p.Votes, new ViewDataDictionary {{ "postedbById", p.PostedById }, { "postID", p.Id }})
                         </a>

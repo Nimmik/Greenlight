@@ -44,10 +44,10 @@ ul.postpage li.postList {
 @media (max-width: 992px) {
   ul.postpage li.postList {
     width: 100%;
-    height: 150px;
+    height: 120px;
   }
 }
-ul.postpage li .card-content {
+ul.postpage li.postList .card-content {
   color: black;
   background-color: #F8F8FF;
   top: 0;
@@ -59,39 +59,53 @@ ul.postpage li .card-content {
   height: 100%;
   border-radius: 8px 8px 8px 8px;
 }
-ul.postpage li .card-content .postTitle {
+ul.postpage li.postList .card-content .postTitle {
   padding-left: 15px;
   padding-top: 15px;
   padding-bottom: 5px;
   margin-bottom: 0px;
   border-bottom: 1px solid #eee;
 }
-ul.postpage li .card-content .postTitle .postTime {
+ul.postpage li.postList .card-content .postTitle .postTime {
   float: right;
   font-size: 10px;
   font-weight: normal;
   display: inline-block;
   margin-right: 10px;
 }
-ul.postpage li .card-content .postTitle h4 {
+ul.postpage li.postList .card-content .postTitle h4 {
   width: 75%;
   display: inline-block;
   margin-top: 0px;
   margin-bottom: 0px;
 }
-ul.postpage li .on {
+ul.postpage li.postList .on {
   box-shadow: 3px 3px 30px #99FF95;
 }
-ul.postpage li .off {
+ul.postpage li.postList .off {
   box-shadow: 3px 3px 30px #FF9ABC;
 }
-ul.postpage li .deleteButton {
+ul.postpage li.postList .deleteButton {
   position: absolute;
   bottom: 10px;
   right: 15px;
 }
-ul.postpage li.card-descript {
-  padding-top: 5px;
+ul.postpage li.postList .card-inside {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  position: relative;
+  height: 100px;
+}
+@media (max-width: 992px) {
+  ul.postpage li.postList .card-inside {
+    height: 50px;
+  }
+}
+ul.postpage li.postList .card-views {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 .validation-summary {
   padding: 1px 20px;
