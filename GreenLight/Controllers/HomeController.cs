@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using JBWebappLibrary.Repository;
 using Microsoft.AspNet.Identity;
+using System.Net;
 
 namespace GreenLight.Controllers
 {
@@ -38,6 +39,7 @@ namespace GreenLight.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create(Post post)
         {
             if (ModelState.IsValid)
@@ -98,8 +100,12 @@ namespace GreenLight.Controllers
             return View(post);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit(Post post)
         {
+            
             unitOfWork.Repository<Post>().Update(post);
             unitOfWork.Save();
             return PartialView("_EditPost", post);

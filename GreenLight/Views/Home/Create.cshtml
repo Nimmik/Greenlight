@@ -7,11 +7,11 @@
 <h2>Create Post</h2>
 
 <div class="form-horizontal">
-    @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { id = "postForm" }))
+    @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { id = "postForm", enctype="multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         @Html.EditorFor(m => m.Title)
-        @Html.EditorFor(m => m.Description)
+        @Html.TextAreaFor(m => m.Description)
 
         <input type="submit" value="등록" class="btn-default">
     }
@@ -22,4 +22,14 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.instances['Description']
+        if (editor) { editor.destroy(true);}
+        CKEDITOR.replace('Description', {
+            enterMode: CKEDITOR.ENTER_BR
+        });
+        CKFinder.setupCKEditor(null, '@Url.Content("~/Content/ckfinder/")')
+    </script>
 }

@@ -5,7 +5,7 @@
     var result = Model.Result;
 }
 <div class="form-horizontal editPage">
-    @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { id = "editForm" }))
+    @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { id = "editForm", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.Id)
@@ -28,9 +28,9 @@
         </div>
         <br />
         <hr />
-        <div class="description">
+        <div class="descriptionHolder">
             <h4>이야기</h4>
-            <textarea name="Description" rows="10" class="form-control descriptionEdit">@Model.Description</textarea>
+            @Html.TextAreaFor(m=>m.Description)
         </div>
     }
 </div>
