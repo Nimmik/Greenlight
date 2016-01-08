@@ -30,7 +30,23 @@
         <hr />
         <div class="descriptionHolder">
             <h4>이야기</h4>
-            @Html.TextAreaFor(m=>m.Description)
+            @Html.TextAreaFor(m=>m.Description, new { @class = "cke", rows = "5" })
         </div>
+        <input type="submit" class="btn btn-info pull-right" value="수정 완료"/>
     }
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/ckeditor/adapters/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            editor = CKEDITOR.instances['Description']
+            if (editor) { editor.destroy(true); }
+            $('textarea.cke').ckeditor();
+            CKFinder.setupCKEditor(null, '@Url.Content("~/Content/ckfinder/")')
+        });
+    </script>
+}

@@ -7,23 +7,16 @@
 
 <div class="col-xs-12">
     <div id="postInfoSection">
-        @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(Model.PostedById))
-        {
-            @Html.Partial("_EditPost", Model)
-        }
-        else
-        {
-            <div class="detailTitle">
-                <h3>@Html.DisplayFor(model => model.Title)</h3>
-                <span>조회수 : @Html.DisplayFor(model => model.Views)</span>
-                <span>신호등 : @(Model.Result == null ? "켜지기 전" : Model.Result == true ? "그린라이트" : "레드라이트")</span>
-            </div>
-            <hr />
-            <div class="description">
-                <h4>이야기</h4>
-                @Html.Raw(Model.Description)
-            </div>
-        }
+        <div class="detailTitle">
+            <h3>@Html.DisplayFor(model => model.Title)</h3>
+            <span>조회수 : @Html.DisplayFor(model => model.Views)</span>
+            <span>신호등 : @(Model.Result == null ? "켜지기 전" : Model.Result == true ? "그린라이트" : "레드라이트")</span>
+        </div>
+        <hr />
+        <div class="description">
+            <h4>이야기</h4>
+            @Html.Raw(Model.Description)
+        </div>
     </div>
 
     <div class="panel-group" id="voteAndComments">
@@ -43,7 +36,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">투표</a>
+                    <a data-toggle="collapse" data-parent="#voteAndComments" href="#collapse2">투표</a>
                 </h4>
             </div>
             <div id="collapse2" class="panel-collapse collapse">
@@ -58,7 +51,7 @@
         <button class="btn btn-info">@Html.ActionLink("Back to List", "OnOrOff","", new { @class = "white-font" })</button>
         @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(Model.PostedById))
         {
-            <input type="submit" value="수정" form="editForm" class="btn btn-info pull-right" />
+            <button class="btn btn-info">@Html.ActionLink("수정", "Edit", new { id = Model.Id }, new { @class = "white-font pull-right" }) </button>
         }
     </div>
 </div>
@@ -67,8 +60,9 @@
 {
     <script src="~/Content/ckfinder/ckfinder.js"></script>
     <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/ckeditor/adapters/jquery.js"></script>
+
     <script>
-        var editor = null;
         $(document).ready(function() {
             bindAll();
         });
@@ -78,12 +72,6 @@
             bindComment();
             bindPoll();
             bindEdit();
-            editor = CKEDITOR.instances['Description']
-            if (editor) { editor.destroy(true); }
-            CKEDITOR.replace('Description', {
-                enterMode: CKEDITOR.ENTER_BR
-            });
-            CKFinder.setupCKEditor(null, '@Url.Content("~/Content/ckfinder/")')
         }
 
         function bindComment() {

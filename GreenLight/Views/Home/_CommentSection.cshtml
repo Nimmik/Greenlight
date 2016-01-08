@@ -5,6 +5,22 @@
 @Html.Partial("_AddComment",new Comment(ViewBag.postId))
 
 <div class="col-xs-12">
+    @foreach (var m in Model.OrderBy(b => b.CreatedOn))
+    {
+        <div class="commentSection">
+            <div class="userPic">
+                <img src="http://www.w3schools.com/images/w3schools_green.jpg"/>
+            </div>
+            <div class="commentDelete">
+                <button type="button" class="btn btn-danger deleteComment" data-commentid="@m.Id">삭제</button>
+            </div>
+            <div class="commentHolder">
+                <span class="comment">@Html.DisplayFor(model => m.Writing)</span><br />
+                <span class="likeInfo" text-muted">Likes : @Html.DisplayFor(model => m.Likes)</span>
+            </div>
+        </div>
+    }
+
     <table class="commentSection table-bordered">
         @foreach (var c in Model.OrderBy(a => a.CreatedOn))
         {
@@ -21,7 +37,7 @@
                 <td class="deleteCommentColumn">
                     @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(c.CreatedById))
                     {
-                        <button type="button" class="btn btn-danger deleteComment" data-commentid="@c.Id">댓글 삭제</button>
+                        <button type="button" data-commentid="@c.Id">댓글 삭제</button>
                     }
                 </td>
             </tr>

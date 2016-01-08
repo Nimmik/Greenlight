@@ -316,8 +316,6 @@
     <Content Include="Content\ckeditor\plugins\a11yhelp\lang\vi.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\lang\zh-cn.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\lang\_translationstatus.txt" />
-    <Content Include="Content\ckeditor\plugins\about\dialogs\about.js" />
-    <Content Include="Content\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
     <Content Include="Content\ckeditor\plugins\adobeair\plugin.js" />
     <Content Include="Content\ckeditor\plugins\ajax\plugin.js" />
     <Content Include="Content\ckeditor\plugins\autogrow\plugin.js" />
@@ -360,8 +358,6 @@
     <Content Include="Content\ckeditor\plugins\docprops\dialogs\docprops.js" />
     <Content Include="Content\ckeditor\plugins\docprops\plugin.js" />
     <Content Include="Content\ckeditor\plugins\find\dialogs\find.js" />
-    <Content Include="Content\ckeditor\plugins\flash\dialogs\flash.js" />
-    <Content Include="Content\ckeditor\plugins\flash\images\placeholder.png" />
     <Content Include="Content\ckeditor\plugins\forms\dialogs\button.js" />
     <Content Include="Content\ckeditor\plugins\forms\dialogs\checkbox.js" />
     <Content Include="Content\ckeditor\plugins\forms\dialogs\form.js" />
@@ -2339,7 +2335,7 @@
     <Content Include="Views\Home\_Poll.cshtml" />
     <Content Include="Views\Home\_PollSection.cshtml" />
     <Content Include="Views\Home\_CardHover.cshtml" />
-    <Content Include="Views\Home\_EditPost.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

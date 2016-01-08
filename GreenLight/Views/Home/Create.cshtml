@@ -24,12 +24,13 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Content/ckfinder/ckfinder.js"></script>
     <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/ckeditor/adapters/jquery.js"></script>
     <script type="text/javascript">
-        var editor = CKEDITOR.instances['Description']
-        if (editor) { editor.destroy(true);}
-        CKEDITOR.replace('Description', {
-            enterMode: CKEDITOR.ENTER_BR
-        });
-        CKFinder.setupCKEditor(null, '@Url.Content("~/Content/ckfinder/")')
+        $(document).ready(function () {
+            editor = CKEDITOR.instances['Description']
+            if (editor) { editor.destroy(true); }
+            $('textarea.cke').ckeditor();
+            CKFinder.setupCKEditor(null, '@Url.Content("~/Content/ckfinder/")')
+        });        
     </script>
 }

@@ -100,15 +100,20 @@ namespace GreenLight.Controllers
             return View(post);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var post = unitOfWork.Repository<Post>().GetByID(id);
+            return View(post);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
         public ActionResult Edit(Post post)
         {
-            
             unitOfWork.Repository<Post>().Update(post);
             unitOfWork.Save();
-            return PartialView("_EditPost", post);
+            return RedirectToAction("Detail", "Home", new { id = post.Id });
         }
         
         //_Comment
