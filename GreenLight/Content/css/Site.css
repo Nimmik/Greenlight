@@ -111,21 +111,6 @@ ul.postpage li.postList .card-views {
   padding: 1px 20px;
   margin-bottom: 50px;
 }
-#Writing {
-  vertical-align: bottom;
-  width: 85%;
-}
-#commentSubmit {
-  vertical-align: top;
-}
-#commentFormGroup {
-  padding: inherit;
-  margin-left: 30px;
-}
-.likeInfo {
-  font-size: smaller;
-  padding-top: 4em;
-}
 #custom-search-input {
   margin: 0;
   margin-top: 10px;
@@ -348,6 +333,9 @@ ul.postpage li.postList .card-views {
 #postInfoSection {
   margin-bottom: 20px;
 }
+.buttons {
+  margin-bottom: 50px;
+}
 .commentSection {
   width: 100%;
   margin-top: 10px;
@@ -364,37 +352,117 @@ ul.postpage li.postList .card-views {
   height: 42px;
 }
 .commentSection div.commentHolder {
-  display: inline;
+  display: block;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  margin-left: 55px;
+  margin-right: 30px;
+}
+.commentSection div.commentHolder .likeHolder span {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+.commentSection div.commentHolder .likeHolder .likeInfo {
+  font-size: smaller;
+}
+.commentSection div.commentHolder .likeHolder .thumbs {
+  background: transparent;
+  width: 10px;
+  height: 10px;
+  border: none;
+  padding: 0;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .commentSection div.commentDelete {
   float: right;
   vertical-align: top;
+  background: transparent;
+  display: block;
 }
-table.commentSection {
+.commentSection div.commentDelete button.deleteComment {
+  color: red;
+  background: transparent;
+  border: none;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  display: inherit;
+}
+.commentSection div.commentDelete button.editComment {
+  display: inherit;
+  color: aqua;
+  background: transparent;
+  border: none;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  margin-top: 10px;
+}
+#notAuthenticated {
+  width: 100%;
+}
+#notAuthenticated .require-Login {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 40px;
+  margin-bottom: 30px;
+}
+.input-group {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 30px;
+}
+.input-group #commentFormGroup {
   width: inherit;
-  background-color: #F4F7FF;
-  box-shadow: 2px 2px 2px #888888;
+  margin: 0;
+  margin-left: 0;
+  padding-left: 30px;
+  padding-right: 30px;
 }
-table.commentSection .deleteCommentColumn {
-  width: 67px;
+.input-group #commentFormGroup span {
+  margin: 0;
+  padding: 0;
 }
-@media (max-width: 992px) {
-  table.commentSection .deleteCommentColumn {
-    width: 40px;
-  }
+.input-group #commentFormGroup input {
+  vertical-align: top;
 }
-table.commentSection .writingColumn {
-  word-break: break-word;
-  width: inherit;
+.input-group #commentFormGroup #writingWrapper {
+  padding-right: 54px;
+  width: 100%;
 }
-table.commentSection .userIcon {
-  width: 140px;
+.input-group #commentFormGroup #writingWrapper #Writing {
+  width: 100%;
 }
-@media (max-width: 992px) {
-  table.commentSection .userIcon {
-    width: 40px;
-  }
+.input-group #commentFormGroup #commentSubmit {
+  float: right;
 }
+/*table.commentSection{
+    width:inherit;
+    background-color:#F4F7FF;
+    box-shadow: 2px 2px 2px #888888;
+
+    .deleteCommentColumn{
+        width:67px;
+        @media (max-width: 992px){
+            width : 40px;
+        }
+    }
+
+    .writingColumn{
+        word-break: break-word;
+        width: inherit;
+    }
+
+    .userIcon{
+        width : 140px;    
+        @media (max-width: 992px){
+            width : 40px;
+        }
+    }
+}*/
 .horizontal {
   background-color: transparent;
   display: inline-block;

@@ -131,24 +131,6 @@ ul.postpage{
     margin-bottom: 50px;
 }
 
-#Writing{
-    vertical-align:bottom;
-    width:85%;
-}
-
-#commentSubmit{
-    vertical-align:top;
-}
-
-#commentFormGroup{
-    padding:inherit;
-    margin-left:30px;
-}
-
-.likeInfo{
-    font-size : smaller;
-    padding-top : 4em;
-}
 
 //Search Box
 #custom-search-input {
@@ -396,6 +378,10 @@ ul.postpage{
     margin-bottom:20px;
 }
 
+.buttons{
+    margin-bottom:50px;
+}
+
 //Comment
 .commentSection{
     width:100%;
@@ -414,17 +400,104 @@ ul.postpage{
         }
 
         &.commentHolder{
-            display:inline;
+            display:block;
+            margin-top:40px;
+            margin-bottom:50px;
+            margin-left:55px;
+            margin-right:30px;
+            .likeHolder{
+                span{
+                    display:inline-block;
+                    margin-top:0;
+                    margin-bottom:0;
+                    padding:0;
+                }
+                .likeInfo{
+                    font-size : smaller;
+                }
+                .thumbs{
+                    background:transparent;
+                    width:10px;
+                    height:10px;
+                    border:none;
+                    padding:0;
+                    margin-left:5px;
+                    margin-right:5px;
+                }
+            }            
         }
 
         &.commentDelete{
             float:right;
             vertical-align:top;
+            background:transparent;
+            display:block;
+            button.deleteComment{
+                color:red;
+                background:transparent;                
+                border:none;
+                width:10px;
+                height:10px;
+                padding:0;
+                display:inherit;
+            }
+            button.editComment{
+                display:inherit;
+                color:aqua;
+                background:transparent;
+                border:none;
+                width:10px;
+                height:10px;
+                padding:0;
+                margin-top:10px;
+            }
         }
     }
 }
 
-table.commentSection{
+#notAuthenticated{
+    width:100%;
+    .require-Login{
+        width:100%;
+        padding-left:15px;
+        padding-right:40px;
+        margin-bottom:30px;
+    }  
+}
+
+
+.input-group{
+    width:100%;
+    padding:0;
+    margin-bottom:30px;
+    #commentFormGroup{
+        width:inherit;
+        margin:0;
+        margin-left:0;
+        padding-left:30px;
+        padding-right:30px;
+
+        span{
+            margin:0;
+            padding:0;
+        }
+        input{
+            vertical-align:top;
+        }
+        #writingWrapper{
+            padding-right:54px;
+            width:100%;
+            #Writing{
+                width:100%;
+            }
+        }
+        #commentSubmit{
+            float:right;
+        }
+    }
+}
+
+/*table.commentSection{
     width:inherit;
     background-color:#F4F7FF;
     box-shadow: 2px 2px 2px #888888;
@@ -447,7 +520,7 @@ table.commentSection{
             width : 40px;
         }
     }
-}
+}*/
 
 //_CardHover
 .horizontal {

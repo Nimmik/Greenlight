@@ -11,7 +11,7 @@
     {
         @Html.AntiForgeryToken()
         @Html.EditorFor(m => m.Title)
-        @Html.TextAreaFor(m => m.Description)
+        @Html.TextAreaFor(m => m.Description, new { @class = "cke", rows = "5" })
 
         <input type="submit" value="등록" class="btn-default">
     }
@@ -21,7 +21,6 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Content/ckfinder/ckfinder.js"></script>
     <script src="~/Content/ckeditor/ckeditor.js"></script>
     <script src="~/Content/ckeditor/adapters/jquery.js"></script>
@@ -31,6 +30,6 @@
             if (editor) { editor.destroy(true); }
             $('textarea.cke').ckeditor();
             CKFinder.setupCKEditor(null, '@Url.Content("~/Content/ckfinder/")')
-        });        
+        });
     </script>
 }

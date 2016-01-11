@@ -44,6 +44,10 @@ namespace GreenLight.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(post.Title == null)
+                {
+                    post.Title = "제목없음";
+                }
                 post.PostedById = User.Identity.GetUserId();
                 post.CreatedOn = DateTime.Now;
                 post.Result = null;
@@ -54,6 +58,8 @@ namespace GreenLight.Controllers
             return RedirectToAction("OnOrOff", "Home");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int Id)
         {
             var model = unitOfWork.Repository<Post>().GetByID(Id);
@@ -80,6 +86,8 @@ namespace GreenLight.Controllers
             return View("OnOrOff", posts);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpdateResult(int postId, bool? result)
         {
             var post = unitOfWork.Repository<Post>().GetByID(postId);

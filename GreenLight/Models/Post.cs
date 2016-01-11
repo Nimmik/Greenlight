@@ -19,7 +19,7 @@ namespace GreenLight.Models
         [Key]
         public int Id { get; set; }
         public string Title { get; set; }
-        public string TitleShort { get { return this.Title.Length < 15 ? this.Title : this.Title.Substring(0, 15) + "..."; } }
+        public string TitleShort { get { return this.Title==null? "" : this.Title.Length < 15 ? this.Title : this.Title.Substring(0, 15) + "..."; } }
         public string Description { get; set; }
         public string DescriptionShort
         {

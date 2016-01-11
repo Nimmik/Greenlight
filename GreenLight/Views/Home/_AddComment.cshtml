@@ -2,8 +2,11 @@
 
 @if (!User.Identity.IsAuthenticated)
 {
-    <input type="text" class="Require-login form-control" value="댓글을 입력하기 위해서 로그인을 해 주세요" readonly />
-    <button class="btn btn-default" type="button">@Html.ActionLink("로그인", "Login", "Account", routeValues: new { returnUrl = Request.Url.PathAndQuery }, htmlAttributes: new { id = "loginLink" })</button>
+    <div id="notAuthenticated">
+        <div class="require-Login">
+            <input type="text" class="form-control" value="댓글을 입력하기 위해서 로그인을 해 주세요" readonly />
+        </div>
+    </div>
 }
 
 else
@@ -14,11 +17,13 @@ else
     <div class="row">
         <div class="input-group">
             @Html.HiddenFor(m => m.PostId)
-            <div class="form-group col-lg-11" id="commentFormGroup">
-                <input type="text" class="form-control" id="Writing" name="Writing" placeholder="댓글 입력">
+            <div class="form-group" id="commentFormGroup">
+                <div id="writingWrapper">
+                    <input type="text" class="form-control" id="Writing" name="Writing" placeholder="댓글 입력">
+                </div>
                 <span class="field-validation-valid help-block" data-valmsg-for="Writing" data-valmsg-replace="true"></span>
 
-                <Input class="btn btn-default" id="commentSubmit" type="submit" value="댓글 등록">
+                <Input class="btn btn-default" id="commentSubmit" type="submit" value="게시">
             </div>
         </div>
     </div>

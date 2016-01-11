@@ -47,8 +47,8 @@
             </div>
         </div>
     </div>
-    <div>
-        <button class="btn btn-info">@Html.ActionLink("Back to List", "OnOrOff","", new { @class = "white-font" })</button>
+    <div class="buttons">
+        <button class="btn btn-info">@Html.ActionLink("목록", "OnOrOff","", new { @class = "white-font" })</button>
         @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(Model.PostedById))
         {
             <button class="btn btn-info">@Html.ActionLink("수정", "Edit", new { id = Model.Id }, new { @class = "white-font pull-right" }) </button>

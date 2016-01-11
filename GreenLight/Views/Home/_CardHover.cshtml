@@ -44,9 +44,11 @@
 //logged in user who voted or the poster.
 else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)) || poster)
 {
-    if (poster) {
+    if (poster)
+    {
         using (Html.BeginForm("UpdateResult", "Home", FormMethod.Post, new { id = "resultForm" }))
         {
+            @Html.AntiForgeryToken()
             @Html.HiddenFor(v => postid)
             <div class="light-toggle">
                 <button type="submit" value="false" name="Result" class="resultFalse btn"></button>
@@ -97,11 +99,11 @@ else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)) || poster)
     }
     if (poster)
     {
-        using (Html.BeginForm("Delete", "Home", FormMethod.Post, new { id = "deletePostForm" }))
+        using (Html.BeginForm("Delete", "Home", new { id = postid } ,FormMethod.Post, new { id = "deletePostForm" }))
         {
-            @Html.HiddenFor(v => postid)
+            @Html.AntiForgeryToken()
             <div class="deleteButton">
-                <button type="submit" value="Delete Post" class="remove-button"><span class="glyphicon glyphicon-remove"></span></button>
+                <button type="submit" class="remove-button"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
         }
     }
