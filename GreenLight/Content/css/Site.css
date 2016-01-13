@@ -338,8 +338,8 @@ ul.postpage li.postList .card-views {
 }
 .commentSection {
   width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 .commentSection div {
   vertical-align: top;
@@ -353,19 +353,15 @@ ul.postpage li.postList .card-views {
 }
 .commentSection div.commentHolder {
   display: block;
-  margin-top: 40px;
-  margin-bottom: 50px;
   margin-left: 55px;
   margin-right: 30px;
 }
-.commentSection div.commentHolder .likeHolder span {
+.commentSection div.commentHolder .likeHolder .likeInfo {
+  font-size: smaller;
   display: inline-block;
   margin-top: 0;
   margin-bottom: 0;
   padding: 0;
-}
-.commentSection div.commentHolder .likeHolder .likeInfo {
-  font-size: smaller;
 }
 .commentSection div.commentHolder .likeHolder .thumbs {
   background: transparent;
@@ -375,6 +371,7 @@ ul.postpage li.postList .card-views {
   padding: 0;
   margin-left: 5px;
   margin-right: 5px;
+  display: inline-block;
 }
 .commentSection div.commentDelete {
   float: right;
@@ -400,6 +397,16 @@ ul.postpage li.postList .card-views {
   height: 10px;
   padding: 0;
   margin-top: 10px;
+}
+.editCommentForm {
+  display: none;
+  margin-left: 55px;
+  margin-bottom: 10px;
+}
+.editCommentButtons {
+  display: none;
+  text-align: right;
+  width: 100%;
 }
 #notAuthenticated {
   width: 100%;

@@ -114,5 +114,37 @@
                 bindAll();
             });
         });
+
+        $(document).on("click", ".likeComment", function () {
+            $("#CommentSection").load("@Url.Action("UpdateLike", "Home")",
+            {
+                commentId: $(this).data("commentid"),
+                like: $(this).data("likevalue")
+            }, function() {
+                bindAll();
+            });
+        });
+
+        $(document).on("click", ".editComment", function () {
+            $(this).parent().toggle();
+            $(this).parent().siblings(".commentHolder").toggle();
+            $(this).parent().siblings(".editCommentForm").toggle();
+            $(this).parent().siblings(".editCommentButtons").toggle();
+            $(this).parent().siblings(".commentDelete").toggle();
+            //$(".commentDelete").toggle();
+            //$(".commentHolder").toggle();
+            //$(".editCommentForm").toggle();
+            //$(".editCommentButtons").toggle();
+        });
+
+        $(document).on("click", ".submitEdit", function () {
+            $("#CommentSection").load("@Url.Action("EditComment", "Home")",
+            {
+                commentId: $(this).data("commentid"),
+                writing: $(this).parent().siblings(".editCommentForm").children("#Writing").val()
+            }, function() {
+                bindAll();
+            });
+        });
     </script>
 }

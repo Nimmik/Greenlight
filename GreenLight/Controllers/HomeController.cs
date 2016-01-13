@@ -168,6 +168,57 @@ namespace GreenLight.Controllers
             return PartialView("_CommentSection", model);
         }
 
+        public ActionResult EditComment(int commentid, string writing)
+        {
+            var comment = unitOfWork.Repository<Comment>().GetByID(commentid);
+            var postid = comment.PostId;
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("login", "Account", new { returnUrl = "/Home/Detail/" + postid });
+            }            
+            comment.Writing = writing;
+            unitOfWork.Repository<Comment>().Update(comment);
+            unitOfWork.Save();
+            var model = unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(postid));
+            ViewBag.postId = postid;
+            return PartialView("_CommentSection", model);
+        }
+
+        public ActionResult UpdateLike(int commentId, int like)
+        {            
+            var comment = unitOfWork.Repository<Comment>().GetByID(commentId);
+            if(comment.Likers == null)
+            {
+                comment.Likers = new List<String>();
+            }
+            var postid = comment.PostId;
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("login", "Account", new { returnUrl = "/Home/Detail/"+postid });
+            }
+            else if(!comment.Likers.Contains(User.Identity.GetUserId()))
+            {
+                comment.Likers.Add(User.Identity.GetUserId());
+
+                if (like == 0)
+                {
+                    if (comment.Likes != 0)
+                    {
+                        comment.Likes--;
+                    }
+                }
+                else if (like == 1)
+                {
+                    comment.Likes++;
+                }
+                unitOfWork.Repository<Comment>().Update(comment);
+                unitOfWork.Save();
+            }
+            var model = unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(postid));
+            ViewBag.postId = postid;
+            return PartialView("_CommentSection", model);
+        }
+
         //_Vote
         [HttpPost]
         public ActionResult VoteFor(Vote vote)

@@ -20,34 +20,20 @@
             <div class="commentHolder">
                 @Html.DisplayFor(model => m.Writing)
                 <div class="likeHolder">
-                    <span class="likeInfo" text-muted">Likes : @Html.DisplayFor(model => m.Likes)</span>
-                    <button type="button" class="thumbs"><span class="glyphicon glyphicon-thumbs-up thumbs"></span></button>
-                    <button type="button" class="thumbs"><span class="glyphicon glyphicon-thumbs-down thumbs"></span></button>
+                    <span class="likeInfo" text-muted">좋아요 : @Html.DisplayFor(model => m.Likes)</span>
+                    <button type="button" class="thumbs likeComment" data-likevalue="1" data-commentid="@m.Id"><span class="glyphicon glyphicon-thumbs-up thumbs"></span></button>
+                    <button type="button" class="thumbs likeComment" data-likevalue="0" data-commentid="@m.Id"><span class="glyphicon glyphicon-thumbs-down thumbs"></span></button>
                 </div>
             </div>
+
+            <div class="editCommentForm">                
+                <textarea class="form-control" cols="20" id="Writing" rows="3">@m.Writing</textarea>
+            </div>
+            <div class="editCommentButtons">
+                <button type="button" class="btn btn-primary btn-xs editComment">취소</button>
+                <button type="submit" class="btn btn-primary btn-xs submitEdit" data-commentid="@m.Id">수정</button>
+            </div>
+
         </div>
     }
-
-    @*<table class="commentSection table-bordered">
-        @foreach (var c in Model.OrderBy(a => a.CreatedOn))
-        {
-            <tr>
-                <td class="userIcon">
-                    Picture @Html.DisplayFor(a => c.CreatedBy.UserName)
-                </td>
-                <td class="writingColumn">
-                    <div class="writingDiv">
-                        @Html.DisplayFor(a => c.Writing) <br />
-                        <span class="likeInfo text-muted">Likes: @Html.DisplayFor(a => c.Likes)</span>
-                    </div>
-                </td>
-                <td class="deleteCommentColumn">
-                    @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(c.CreatedById))
-                    {
-                        <button type="button" data-commentid="@c.Id">댓글 삭제</button>
-                    }
-                </td>
-            </tr>
-        }
-    </table>*@
 </div>

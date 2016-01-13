@@ -191,6 +191,18 @@
     <Compile Include="Migrations\201512101404446_init.Designer.cs">
       <DependentUpon>201512101404446_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601130820040_Add_Likers.cs" />
+    <Compile Include="Migrations\201601130820040_Add_Likers.Designer.cs">
+      <DependentUpon>201601130820040_Add_Likers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601130849179_change_likers.cs" />
+    <Compile Include="Migrations\201601130849179_change_likers.Designer.cs">
+      <DependentUpon>201601130849179_change_likers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601130855023_stringToList.cs" />
+    <Compile Include="Migrations\201601130855023_stringToList.Designer.cs">
+      <DependentUpon>201601130855023_stringToList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Utility\DateTimeExtensions.cs" />
     <Compile Include="Utility\LocalizationHelper.cs" />
@@ -2356,6 +2368,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512101404446_init.resx">
       <DependentUpon>201512101404446_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601130820040_Add_Likers.resx">
+      <DependentUpon>201601130820040_Add_Likers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601130849179_change_likers.resx">
+      <DependentUpon>201601130849179_change_likers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601130855023_stringToList.resx">
+      <DependentUpon>201601130855023_stringToList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

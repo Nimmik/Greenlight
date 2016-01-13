@@ -14,6 +14,7 @@ namespace GreenLight.Models
         {
             this.PostId = postId;
             this.Writing = string.Empty;
+            this.Likers = new List<string>();
         }
         public Comment()
         {
@@ -34,5 +35,7 @@ namespace GreenLight.Models
 
         public DateTime CreatedOn { get; set; }
         public int Likes { get; set; }
+
+        public List<string> Likers { get; set; }
     }
 }
