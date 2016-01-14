@@ -28,5 +28,8 @@ namespace GreenLight.Models
 
         [InverseProperty("Voter")]
         public virtual List<Vote> Votes { get; set; }
+
+        [InverseProperty("LikeUser")]
+        public virtual List<UserCommentLike> Likers { get; set; }
     }
 }

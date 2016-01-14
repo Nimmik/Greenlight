@@ -203,7 +203,12 @@
     <Compile Include="Migrations\201601130855023_stringToList.Designer.cs">
       <DependentUpon>201601130855023_stringToList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601140359176_addviewmodel.cs" />
+    <Compile Include="Migrations\201601140359176_addviewmodel.Designer.cs">
+      <DependentUpon>201601140359176_addviewmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\UserCommentLike.cs" />
     <Compile Include="Utility\DateTimeExtensions.cs" />
     <Compile Include="Utility\LocalizationHelper.cs" />
     <Compile Include="Utility\MarkdownHelper.cs" />
@@ -212,6 +217,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Context\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="ViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Vote.cs" />
@@ -2377,6 +2383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601130855023_stringToList.resx">
       <DependentUpon>201601130855023_stringToList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601140359176_addviewmodel.resx">
+      <DependentUpon>201601140359176_addviewmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,28 +1,33 @@
 ﻿@model GreenLight.Models.Post
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "글쓰기";
 }
-
-<h2>Create Post</h2>
-
 <div class="form-horizontal">
     @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { id = "postForm", enctype="multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
-        @Html.EditorFor(m => m.Title)
+        <div class="form-group">
+            <label class="control-label" for="Title">제목</label>
+            <div class="controls">
+                <input class="form-control" id="Title" name="Title" type="text" value="">
+                <span class="field-validation-valid help-block" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <label for="Description" class="descriptionLabel">이야기</label>
         @Html.TextAreaFor(m => m.Description, new { @class = "cke", rows = "5" })
 
-        <input type="submit" value="등록" class="btn-default">
+        <input type="submit" value="등록" class="btn btn-info pull-right">
     }
 </div>
 <div>
-    @Html.ActionLink("Back to List", "OnOrOff")
+    @Html.ActionLink("Back to List", "OnOrOff", "", new {@class = "btn btn-info"})
 </div>
 
 @section Scripts {
     <script src="~/Content/ckfinder/ckfinder.js"></script>
-    <script src="~/Content/ckeditor/ckeditor.js"></script>
+    @*<script src="~/Content/ckeditor/ckeditor.js"></script>*@
+    <script src="//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
     <script src="~/Content/ckeditor/adapters/jquery.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {

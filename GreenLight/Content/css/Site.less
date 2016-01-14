@@ -131,6 +131,19 @@ ul.postpage{
     margin-bottom: 50px;
 }
 
+//Create
+#postForm{
+    margin-bottom : 20px;
+    input{
+        margin-top : 20px;
+    }
+    .control-label{
+        font-size:2em;
+    }
+    .descriptionLabel{
+        font-size:1.3em;
+    }
+}
 
 //Search Box
 #custom-search-input {
@@ -352,6 +365,9 @@ ul.postpage{
     .titleDescript{
         margin-top:6px;
     }
+    .descriptionHolder{
+        margin-bottom:20px;
+    }
     #Description{
         display: block;
         margin-bottom:30px;
@@ -378,14 +394,19 @@ ul.postpage{
     margin-bottom:20px;
 }
 
-.buttons{
-    margin-bottom:50px;
+.detailTitle{
+    a{
+        margin-left:10px;
+        top:-25px;
+        right:10px;
+        position:relative;
+    }
 }
 
 //Comment
 .commentSection{
     width:100%;
-    margin-top:30px;
+    margin-top:10px;
     margin-bottom:20px;
 
     div{
@@ -419,7 +440,10 @@ ul.postpage{
                     padding:0;
                     margin-left:5px;
                     margin-right:5px;
-                    display:inline-block;
+                    display:inline;
+                }
+                .down{
+                    margin-left:20px;
                 }
             }            
         }
@@ -461,6 +485,16 @@ ul.postpage{
     display:none;
     text-align:right;
     width:100%;
+}
+
+.liked .up{
+    color:forestgreen;
+    font-weight:bold;
+}
+
+.disliked .down{
+    color:red;
+    font-weight:bold;
 }
 
 //_AddComment
@@ -686,4 +720,27 @@ ul.postpage{
             }
         }
     }
+}
+
+//animate
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -ms-animation: spin .7s infinite linear;
+    -webkit-animation: spinw .7s infinite linear;
+    -moz-animation: spinm .7s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+  
+@-webkit-keyframes spinw {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes spinm {
+    from { -moz-transform: rotate(0deg);}
+    to { -moz-transform: rotate(360deg);}
 }

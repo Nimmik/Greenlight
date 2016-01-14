@@ -20,7 +20,8 @@ namespace GreenLight.Controllers
             return View();
         }
 
-        //OnOrOff Page
+        #region OnOrOff Page
+
         public ActionResult OnOrOff()
         {
             var posts = unitOfWork.Repository<Post>().Get();
@@ -97,7 +98,10 @@ namespace GreenLight.Controllers
             return RedirectToAction("OnOrOff", "Home");
         }
 
-        //Detail Page
+        #endregion
+
+        #region Detail Page
+
         public ActionResult Detail(int id)
         {
             var post = unitOfWork.Repository<Post>().GetByID(id);
@@ -123,8 +127,18 @@ namespace GreenLight.Controllers
             unitOfWork.Save();
             return RedirectToAction("Detail", "Home", new { id = post.Id });
         }
-        
-        //_Comment
+
+        public ActionResult GetComment(int postId)
+        {
+            var model = getCommentViewModel(unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(postId)));
+            ViewBag.postId = postId;
+            return PartialView("_CommentSection", model);
+        }
+       
+        #endregion
+
+        #region _Comment
+
         [HttpPost]
         public ActionResult AddComment(Comment comment)
         {
@@ -139,7 +153,7 @@ namespace GreenLight.Controllers
                 unitOfWork.Repository<Comment>().Insert(comment);
                 unitOfWork.Save();
             }
-            var model = unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(comment.PostId));
+            var model = getCommentViewModel(unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(comment.PostId)));
             ViewBag.postId = comment.PostId;
             return PartialView("_CommentSection",model);
         }
@@ -163,7 +177,7 @@ namespace GreenLight.Controllers
                 return new HttpUnauthorizedResult();
             }
             var postId = comment.First().PostId;
-            var model = unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(postId));
+            var model = getCommentViewModel(unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(postId)));
             ViewBag.postId = postId;
             return PartialView("_CommentSection", model);
         }
@@ -179,47 +193,56 @@ namespace GreenLight.Controllers
             comment.Writing = writing;
             unitOfWork.Repository<Comment>().Update(comment);
             unitOfWork.Save();
-            var model = unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(postid));
+            var model = getCommentViewModel(unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(postid)));
             ViewBag.postId = postid;
             return PartialView("_CommentSection", model);
         }
 
-        public ActionResult UpdateLike(int commentId, int like)
-        {            
+        public ActionResult UpdateLike(int commentId, bool like)
+        {
             var comment = unitOfWork.Repository<Comment>().GetByID(commentId);
-            if(comment.Likers == null)
-            {
-                comment.Likers = new List<String>();
-            }
             var postid = comment.PostId;
+            var userId = User.Identity.GetUserId();
+            bool? currentUserChoice = like;
             if (!User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("login", "Account", new { returnUrl = "/Home/Detail/"+postid });
+                return RedirectToAction("login", "Account", new { returnUrl = "/Home/Detail/" + postid });
             }
-            else if(!comment.Likers.Contains(User.Identity.GetUserId()))
+            var Likes = unitOfWork.Repository<UserCommentLike>().Get(a => a.LikedCommentId.Equals(commentId) && a.LikeUserId.Equals(userId));
+            if(Likes.Any())
             {
-                comment.Likers.Add(User.Identity.GetUserId());
-
-                if (like == 0)
+                if (Likes.First().Up.Equals(like))
                 {
-                    if (comment.Likes != 0)
-                    {
-                        comment.Likes--;
-                    }
+                    unitOfWork.Repository<UserCommentLike>().Delete(Likes.First().id);
+                    currentUserChoice = null;
                 }
-                else if (like == 1)
+                else
                 {
-                    comment.Likes++;
+                    Likes.First().Up = like;
+                    unitOfWork.Repository<UserCommentLike>().Update(Likes.First());
                 }
-                unitOfWork.Repository<Comment>().Update(comment);
-                unitOfWork.Save();
             }
-            var model = unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(postid));
+            else
+            {
+                var likeModel = new UserCommentLike()
+                {
+                    LikeUserId = userId,
+                    LikedCommentId = commentId,
+                    Up = like
+                };
+                unitOfWork.Repository<UserCommentLike>().Insert(likeModel);
+            }
+            unitOfWork.Save();
+            var comments = unitOfWork.Repository<Comment>().Get(a => a.PostId.Equals(postid));
+            var model = getCommentViewModel(comments);
             ViewBag.postId = postid;
             return PartialView("_CommentSection", model);
         }
+        
+        #endregion
 
-        //_Vote
+        #region _Vote
+
         [HttpPost]
         public ActionResult VoteFor(Vote vote)
         {
@@ -237,13 +260,42 @@ namespace GreenLight.Controllers
             ViewBag.postId = vote.PostId;
             return PartialView("_PollSection", model);
         }
+       
+        #endregion
 
-        //RankingPage
+        #region RankingPage
+
         public ActionResult Ranking()
         {
             var users = unitOfWork.Repository<ApplicationUser>().Get();
 
             return View(users);
         }
+
+        #endregion
+
+        #region functions
+
+        private IEnumerable<ViewModels.CommentViewModel> getCommentViewModel(IEnumerable<Comment> comments)
+        {
+            var model = new List<CommentViewModel>();
+            var userId = User.Identity.GetUserId();
+            foreach (var c in comments)
+            {
+                var l = unitOfWork.Repository<UserCommentLike>().Count(a => a.LikedCommentId.Equals(c.Id) && a.Up);
+                var d = unitOfWork.Repository<UserCommentLike>().Count(a => a.LikedCommentId.Equals(c.Id) && !a.Up);
+                var cuc = unitOfWork.Repository<UserCommentLike>().Get(a => a.LikedCommentId.Equals(c.Id) && a.LikeUserId.Equals(userId));
+                model.Add(new CommentViewModel()
+                {
+                    Comment = c,
+                    Like = l,
+                    DisLike = d,
+                    CurrentUserLike = cuc.Any() ? cuc.First().Up : (bool?)null
+                });
+            }
+            return model;
+        }
+
+        #endregion
     }
 }

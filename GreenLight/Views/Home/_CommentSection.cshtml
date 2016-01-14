@@ -1,37 +1,38 @@
 ﻿@using GreenLight.Models
 @using Microsoft.AspNet.Identity
-@model IEnumerable<GreenLight.Models.Comment>
+@model IEnumerable<GreenLight.ViewModels.CommentViewModel>
 
 @Html.Partial("_AddComment",new Comment(ViewBag.postId))
 
 <div class="col-xs-12">
-    @foreach (var m in Model.OrderBy(b => b.CreatedOn))
+    @foreach (var m in Model.OrderBy(b => b.Comment.CreatedOn))
     {
         <div class="commentSection">
             <div class="userPic">
                 <img src="http://www.w3schools.com/images/w3schools_green.jpg"/>
             </div>
-            @if(User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(m.CreatedById)) { 
+            @if(User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(m.Comment.CreatedById)) { 
                 <div class="commentDelete">
-                    <button type="button" class="btn btn-danger deleteComment" data-commentid="@m.Id"><span class="glyphicon glyphicon-remove"></span></button>
-                    <button type="button" class="btn btn-info editComment" data-commentid="@m.Id"><span class="glyphicon glyphicon-edit"></span></button>
+                    <button type="button" class="btn btn-danger deleteComment" data-commentid="@m.Comment.Id"><span class="glyphicon glyphicon-remove"></span></button>
+                    <button type="button" class="btn btn-info editComment" data-commentid="@m.Comment.Id"><span class="glyphicon glyphicon-edit"></span></button>
                 </div>
             }
             <div class="commentHolder">
-                @Html.DisplayFor(model => m.Writing)
-                <div class="likeHolder">
-                    <span class="likeInfo" text-muted">좋아요 : @Html.DisplayFor(model => m.Likes)</span>
-                    <button type="button" class="thumbs likeComment" data-likevalue="1" data-commentid="@m.Id"><span class="glyphicon glyphicon-thumbs-up thumbs"></span></button>
-                    <button type="button" class="thumbs likeComment" data-likevalue="0" data-commentid="@m.Id"><span class="glyphicon glyphicon-thumbs-down thumbs"></span></button>
+                @Html.DisplayFor(model => m.Comment.Writing)
+                <div class="likeHolder @(m.CurrentUserLike.Equals(null)? "" : (bool)m.CurrentUserLike? "liked" : "disliked")">
+                    @*<span class="likeInfo" text-muted">좋아요 : @Html.DisplayFor(model => m.Like)</span>
+                    <span class="likeInfo" text-muted">꺼져 : @Html.DisplayFor(model => m.DisLike)</span>*@
+                    <button type="button" class="thumbs likeComment up" data-likevalue="true" data-commentid="@m.Comment.Id"><span class="glyphicon glyphicon-thumbs-up thumbs"></span>@Html.DisplayFor(model => m.Like)</button>
+                    <button type="button" class="thumbs likeComment down" data-likevalue="false" data-commentid="@m.Comment.Id"><span class="glyphicon glyphicon-thumbs-down thumbs"></span>@Html.DisplayFor(model => m.DisLike)</button>
                 </div>
             </div>
 
             <div class="editCommentForm">                
-                <textarea class="form-control" cols="20" id="Writing" rows="3">@m.Writing</textarea>
+                <textarea class="form-control" cols="20" id="Writing" rows="3">@m.Comment.Writing</textarea>
             </div>
             <div class="editCommentButtons">
                 <button type="button" class="btn btn-primary btn-xs editComment">취소</button>
-                <button type="submit" class="btn btn-primary btn-xs submitEdit" data-commentid="@m.Id">수정</button>
+                <button type="submit" class="btn btn-primary btn-xs submitEdit" data-commentid="@m.Comment.Id">수정</button>
             </div>
 
         </div>

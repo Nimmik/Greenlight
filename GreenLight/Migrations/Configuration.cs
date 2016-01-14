@@ -81,8 +81,7 @@ namespace GreenLight.Migrations
                     Writing = "Something Written",
                     PostId = 1,
                     Post = context.Posts.Find(1),
-                    CreatedOn = DateTime.Now,
-                    Likes = 2
+                    CreatedOn = DateTime.Now
                 }
             );
 

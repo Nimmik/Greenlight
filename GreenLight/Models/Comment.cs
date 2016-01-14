@@ -14,7 +14,6 @@ namespace GreenLight.Models
         {
             this.PostId = postId;
             this.Writing = string.Empty;
-            this.Likers = new List<string>();
         }
         public Comment()
         {
@@ -34,8 +33,8 @@ namespace GreenLight.Models
         public virtual Post Post { get; set; }
 
         public DateTime CreatedOn { get; set; }
-        public int Likes { get; set; }
 
-        public List<string> Likers { get; set; }
+        [InverseProperty("LikedComment")]
+        public virtual List<UserCommentLike> Likes { get; set; }
     }
 }
