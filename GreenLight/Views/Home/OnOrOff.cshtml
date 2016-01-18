@@ -31,7 +31,7 @@
                         <div class="postTitle"><h4>@p.TitleShort</h4><span class="postTime">@p.CreatedOn.Date.ToString("yyyy/MM/dd")</span></div>
                         @*<hr />*@
                         <div class="card-inside">
-                            줄거리 : @Html.DisplayFor(a => p.DescriptionShort)
+                            @Html.DisplayFor(a => p.DescriptionShort)
                         </div>
                         <div class="card-views">
                             조회수 : @Html.DisplayFor(a => p.Views)
@@ -53,6 +53,9 @@
             $('.horizontal .progress-fill span').each(function () {
                 var percent = $(this).html();
                 $(this).parent().css('width', percent);
+                if (parseInt(percent) <= 10) {
+                    $(this).parent().css('color', "black");
+                }
             });
         });
     </script>

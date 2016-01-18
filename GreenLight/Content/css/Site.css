@@ -227,7 +227,7 @@ ul.postpage li.postList .card-views {
   transform: translate(-50%, -50%);
 }
 .hvrbox .hvrbox-graph .graphName {
-  float: left;
+  margin-left: 50px;
 }
 #resultForm {
   float: right;
@@ -446,6 +446,9 @@ ul.postpage li.postList .card-views {
   padding-right: 40px;
   margin-bottom: 30px;
 }
+#writingWrapper .search {
+  border-radius: 5px 5px;
+}
 .input-group {
   width: 100%;
   padding: 0;
@@ -475,34 +478,11 @@ ul.postpage li.postList .card-views {
 .input-group #commentFormGroup #commentSubmit {
   float: right;
 }
-/*table.commentSection{
-    width:inherit;
-    background-color:#F4F7FF;
-    box-shadow: 2px 2px 2px #888888;
-
-    .deleteCommentColumn{
-        width:67px;
-        @media (max-width: 992px){
-            width : 40px;
-        }
-    }
-
-    .writingColumn{
-        word-break: break-word;
-        width: inherit;
-    }
-
-    .userIcon{
-        width : 140px;    
-        @media (max-width: 992px){
-            width : 40px;
-        }
-    }
-}*/
 .horizontal {
   background-color: transparent;
   display: inline-block;
   width: 60%;
+  vertical-align: top;
 }
 .horizontal .progress-bar {
   float: left;
@@ -519,12 +499,11 @@ ul.postpage li.postList .card-views {
   top: -10px;
   width: 100%;
   height: 20px;
-  background: white;
+  background-color: white;
   border: 1px solid white;
 }
 .horizontal .progress-fill {
   position: relative;
-  background: #666;
   height: 19px;
   width: 50%;
   color: #fff;
@@ -537,6 +516,18 @@ ul.postpage li.postList .card-views {
 .horizontal .progress-fill {
   border-radius: 3px;
   box-shadow: inset 0 0 5px #ffffff;
+}
+.horizontal .green {
+  background-color: forestgreen;
+}
+.horizontal .red {
+  background-color: red;
+}
+.wide-poll {
+  width: 80%;
+}
+.bottomPoll {
+  margin-top: 30px;
 }
 #index-background {
   width: 100vw;
@@ -636,8 +627,13 @@ ul.postpage li.postList .card-views {
   text-shadow: 0px 3px 0px #07526e, 0px 5px 1px #07526e /*, 3px 0px 1px #07526e, 3px 3px 1px #07526e,
                     -2px 0px 1px #68cff2*/;
 }
+.Ranking {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+}
 .glyphicon-refresh-animate {
-  -animation: spin .7s infinite linear;
+  animation: spin .7s infinite linear;
   -ms-animation: spin .7s infinite linear;
   -webkit-animation: spinw .7s infinite linear;
   -moz-animation: spinm .7s infinite linear;

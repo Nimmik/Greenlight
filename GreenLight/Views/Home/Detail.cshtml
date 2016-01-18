@@ -28,26 +28,26 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#voteAndComments" href="#collapse1">댓글 <span class="badge">@Model.Comments.Count()</span><br /></a>
+                    <a data-toggle="collapse" data-parent="#voteAndComments" href="#collapse1">투표</a>
                 </h4>
             </div>
             <div id="collapse1" class="panel-collapse collapse">
-                <div class="panel-body" id="CommentSection">
-                    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+                <div class="panel-body" id="PollSection">
+                    @{ViewBag.PostId = Model.Id;}
+                    @{ViewBag.postedById = Model.PostedById;}
+                    @Html.Partial("_PollSection", Model.Votes)
                 </div>
             </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#voteAndComments" href="#collapse2">투표</a>
+                    <a data-toggle="collapse" data-parent="#voteAndComments" href="#collapse2">댓글 <span class="badge">@Model.Comments.Count()</span><br /></a>
                 </h4>
             </div>
             <div id="collapse2" class="panel-collapse collapse">
-                <div class="panel-body" id="PollSection">
-                    @{ViewBag.PostId = Model.Id;}
-                    @{ViewBag.postedById = Model.PostedById;}
-                    @Html.Partial("_PollSection", Model.Votes)
+                <div class="panel-body" id="CommentSection">
+                    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
                 </div>
             </div>
         </div>
@@ -65,14 +65,20 @@
             bindAll();
             $("#CommentSection").load("@Url.Action("GetComment","Home", new { postId = Model.Id })", function () {
                 bindAll();
-            })
+            });
+            $('.horizontal .progress-fill span').each(function () {
+                var percent = $(this).html();
+                $(this).parent().css('width', percent);
+                if (parseInt(percent) <= 10) {
+                    $(this).parent().css('color', "black");
+                }
+            });
         });
 
         function bindAll() {
             $('input#Writing').attr('value', '');
             bindComment();
             bindPoll();
-            //bindEdit();
         }
 
         function bindComment() {
@@ -91,17 +97,6 @@
                 target: "#PollSection"
             })
         }
-
-        //function bindEdit() {
-        //    console.log("bindEdit");
-        //    $("#editForm").ajaxForm({
-        //        target: "#postInfoSection",
-        //        success: function () {
-        //            bindAll();
-        //            alert("수정 되었습니다");
-        //        }
-        //    });
-        //}
 
         $(document).on("click", ".deleteComment", function() {
             if (!confirm("삭제 하시겠습니까?")) {
@@ -132,10 +127,6 @@
             $(this).parent().siblings(".editCommentForm").toggle();
             $(this).parent().siblings(".editCommentButtons").toggle();
             $(this).parent().siblings(".commentDelete").toggle();
-            //$(".commentDelete").toggle();
-            //$(".commentHolder").toggle();
-            //$(".editCommentForm").toggle();
-            //$(".editCommentButtons").toggle();
         });
 
         $(document).on("click", ".submitEdit", function () {
@@ -147,5 +138,6 @@
                 bindAll();
             });
         });
+
     </script>
 }

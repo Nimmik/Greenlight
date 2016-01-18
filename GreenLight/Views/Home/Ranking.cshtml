@@ -1,11 +1,39 @@
-﻿@model IEnumerable<GreenLight.Models.ApplicationUser>
+﻿@model IEnumerable<GreenLight.ViewModels.RankingViewModel>
 
 @{ 
     ViewBag.Title = "랭킹";
+    int i = 0;
+    var modeltemp = Model.OrderByDescending(a => a.voteCount);
+    var model = modeltemp.Take(15);
 }
 
-@foreach(var u in Model)
-{
-    @u.Votes.Count;
-    <br />
-}
+<h2>사용자 투표 정확도 순위</h2>
+
+<table class="Ranking table table-hover">
+    <tr>
+        <td>
+            순위
+        </td>
+        <td>
+            투표 수
+        </td>
+        <td>
+            정확도
+        </td>
+    </tr>
+    @foreach (var m in model.OrderByDescending(a => a.percision))
+    {
+        i++;
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @m.voteCount
+            </td>
+            <td>
+                @m.percision%
+            </td>
+        </tr>
+    }
+</table>

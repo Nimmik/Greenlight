@@ -25,7 +25,7 @@ namespace GreenLight.Models
         {
             get
             {
-                var nohtml = Regex.Replace(this.Description, @"(<[^>]*>)|(\n)|(\r)|(\t)", String.Empty);
+                var nohtml = Regex.Replace(this.Description, @"(<[^>]*>)|(\n)|(\r)|(\t)|(&nbsp;)", String.Empty);
                     //.Replace("\n", "")
                     //.Replace("\r", "")
                     //.Replace("\t", "");

@@ -20,8 +20,6 @@
             <div class="commentHolder">
                 @Html.DisplayFor(model => m.Comment.Writing)
                 <div class="likeHolder @(m.CurrentUserLike.Equals(null)? "" : (bool)m.CurrentUserLike? "liked" : "disliked")">
-                    @*<span class="likeInfo" text-muted">좋아요 : @Html.DisplayFor(model => m.Like)</span>
-                    <span class="likeInfo" text-muted">꺼져 : @Html.DisplayFor(model => m.DisLike)</span>*@
                     <button type="button" class="thumbs likeComment up" data-likevalue="true" data-commentid="@m.Comment.Id"><span class="glyphicon glyphicon-thumbs-up thumbs"></span>@Html.DisplayFor(model => m.Like)</button>
                     <button type="button" class="thumbs likeComment down" data-likevalue="false" data-commentid="@m.Comment.Id"><span class="glyphicon glyphicon-thumbs-down thumbs"></span>@Html.DisplayFor(model => m.DisLike)</button>
                 </div>

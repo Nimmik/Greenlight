@@ -72,11 +72,11 @@ else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)) || poster)
     {
         <div class="hvrbox-graph">
             <div>
-                <span class="graphName">그린라이트 : </span>
+                <span>그린라이트 : </span>
                 <div class="horizontal">
                     <div class="progress-bar">
                         <div class="progress-track">
-                            <div class="progress-fill">
+                            <div class="progress-fill green">
                                 <span>@(Html.DisplayFor(a => yesPercent))%</span>
                             </div>
                         </div>
@@ -84,11 +84,11 @@ else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)) || poster)
                 </div>
             </div>
             <div>
-                <span class="graphName">레드라이트 : </span>
+                <span>레드라이트 : </span>
                 <div class="horizontal">
                     <div class="progress-bar">
                         <div class="progress-track">
-                            <div class="progress-fill">
+                            <div class="progress-fill red">
                                 <span>@(Html.DisplayFor(a => noPercent))%</span>
                             </div>
                         </div>

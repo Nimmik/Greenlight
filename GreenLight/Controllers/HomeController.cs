@@ -268,8 +268,24 @@ namespace GreenLight.Controllers
         public ActionResult Ranking()
         {
             var users = unitOfWork.Repository<ApplicationUser>().Get();
-
-            return View(users);
+            var model = new List<RankingViewModel>();
+            foreach(var u in users)
+            {
+                var vote = u.Votes;//All votes of a user
+                double count = vote.Count();//number of votes from that user
+                //votes that user picked yes and the result is yes or no and the result is no.
+                double rightVotes = vote.Count(a => a.Post.Result.Equals(a.OnOff));
+                double wrongVotes = count - rightVotes;
+                double votePercision = rightVotes / count * 100;
+                model.Add(new RankingViewModel()
+                {
+                    percision = votePercision,
+                    voteCount = count,
+                    rightVote = rightVotes,
+                    wrongVote = wrongVotes                
+                });
+            }
+            return View(model);
         }
 
         #endregion

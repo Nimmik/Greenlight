@@ -3,8 +3,21 @@
 @model IEnumerable<GreenLight.Models.Vote>
 
 @{ 
-    var yes = Model.Count(v => v.OnOff == true);
-    var no = Model.Count(v => v.OnOff == false);
+    double yes = Model.Count(v => v.OnOff == true);
+    double no = Model.Count(v => v.OnOff == false);
+    double allVotes = yes + no;
+    double yesPercent;
+    double noPercent;
+    if (allVotes == 0)
+    {
+        yesPercent = 0;
+        noPercent = 0;
+    }
+    else
+    {
+        yesPercent = Math.Round(yes / allVotes * 100, 1);
+        noPercent = Math.Round(no / allVotes * 100, 1);
+    }
 }
 
 @if (!User.Identity.IsAuthenticated)
@@ -16,13 +29,31 @@
 }
 else if (Model.Any(a => User.Identity.GetUserId().Equals(a.VoterId)) || User.Identity.GetUserId().Equals(ViewBag.postedById))
 {
-    <div class="voteResult" id="pollResult">
-        <p>
-            그린라이트 : @Html.DisplayFor(a => yes)
-        </p>
-        <p>
-            레드라이트 : @Html.DisplayFor(a => no)
-        </p>
+    <div class="hvrbox-graph">
+        <div>
+            <span class="graphName">그린라이트 : </span>
+            <div class="horizontal wide-poll">
+                <div class="progress-bar">
+                    <div class="progress-track">
+                        <div class="progress-fill green">
+                            <span>@(Html.DisplayFor(a => yesPercent))%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottomPoll">
+            <span class="graphName">레드라이트 : </span>
+            <div class="horizontal wide-poll">
+                <div class="progress-bar">
+                    <div class="progress-track">
+                        <div class="progress-fill red">
+                            <span>@(Html.DisplayFor(a => noPercent))%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 }
 else
