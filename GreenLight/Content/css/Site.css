@@ -632,6 +632,9 @@ ul.postpage li.postList .card-views {
   text-align: center;
   margin-top: 40px;
 }
+.Ranking .tableTitle {
+  font-weight: bold;
+}
 .glyphicon-refresh-animate {
   animation: spin .7s infinite linear;
   -ms-animation: spin .7s infinite linear;

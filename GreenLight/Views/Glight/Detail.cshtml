@@ -11,10 +11,10 @@
             <h3>@Html.DisplayFor(model => model.Title)</h3>
             <span>조회수 : @Html.DisplayFor(model => model.Views)</span>
             <span>신호등 : @(Model.Result == null ? "켜지기 전" : Model.Result == true ? "그린라이트" : "레드라이트")</span>
-            @Html.ActionLink("목록", "OnOrOff", "", new { @class = "btn btn-info pull-right btn-sm" })
+            @Html.ActionLink("목록", "Index","Glight", "", new { @class = "btn btn-info pull-right btn-sm" })
             @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(Model.PostedById))
             {
-                @Html.ActionLink("수정", "Edit", new { id = Model.Id }, new { @class = "btn btn-info pull-right btn-sm" })
+                @Html.ActionLink("수정", "Edit", "Glight",  new { id = Model.Id }, new { @class = "btn btn-info pull-right btn-sm" })
             }
         </div>
         <hr />
@@ -63,7 +63,7 @@
     <script>
         $(document).ready(function() {
             bindAll();
-            $("#CommentSection").load("@Url.Action("GetComment","Home", new { postId = Model.Id })", function () {
+            $("#CommentSection").load("@Url.Action("GetComment","Glight", new { postId = Model.Id })", function () {
                 bindAll();
             });
             $('.horizontal .progress-fill span').each(function () {
@@ -103,7 +103,7 @@
                 return;
             }
 
-            $("#CommentSection").load("@Url.Action("DeleteComment", "Home")",
+            $("#CommentSection").load("@Url.Action("DeleteComment", "Glight")",
             {
                 commentId: $(this).data("commentid")
             }, function() {
@@ -112,7 +112,7 @@
         });
 
         $(document).on("click", ".likeComment", function () {
-            $("#CommentSection").load("@Url.Action("UpdateLike", "Home")",
+            $("#CommentSection").load("@Url.Action("UpdateLike", "Glight")",
             {
                 commentId: $(this).data("commentid"),
                 like: $(this).data("likevalue")
@@ -130,7 +130,7 @@
         });
 
         $(document).on("click", ".submitEdit", function () {
-            $("#CommentSection").load("@Url.Action("EditComment", "Home")",
+            $("#CommentSection").load("@Url.Action("EditComment", "Glight")",
             {
                 commentId: $(this).data("commentid"),
                 writing: $(this).parent().siblings(".editCommentForm").children("#Writing").val()

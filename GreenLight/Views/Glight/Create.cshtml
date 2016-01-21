@@ -4,7 +4,7 @@
     ViewBag.Title = "글쓰기";
 }
 <div class="form-horizontal">
-    @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { id = "postForm", enctype="multipart/form-data" }))
+    @using (Html.BeginForm("Create", "Glight", FormMethod.Post, new { id = "postForm", enctype="multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         <div class="form-group">
@@ -21,7 +21,7 @@
     }
 </div>
 <div>
-    @Html.ActionLink("Back to List", "OnOrOff", "", new {@class = "btn btn-info"})
+    @Html.ActionLink("취소", "Index", "Glight", "", new {@class = "btn btn-info"})
 </div>
 
 @section Scripts {

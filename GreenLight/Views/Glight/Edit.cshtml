@@ -5,7 +5,7 @@
     var result = Model.Result;
 }
 <div class="form-horizontal editPage">
-    @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { id = "editForm", enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Edit", "Glight", FormMethod.Post, new { id = "editForm", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.Id)

@@ -182,6 +182,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\GlightController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2309,8 +2310,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\OnOrOff.cshtml" />
-    <Content Include="Views\Home\Ranking.cshtml" />
+    <Content Include="Views\Glight\Index.cshtml" />
+    <Content Include="Views\Glight\Ranking.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -2333,8 +2334,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <Content Include="Views\Home\Detail.cshtml" />
-    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Glight\Detail.cshtml" />
+    <Content Include="Views\Glight\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TimeSpan.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Text.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
@@ -2349,12 +2350,12 @@
     <Content Include="Views\Shared\EditorTemplates\Decimal.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
-    <Content Include="Views\Home\_CommentSection.cshtml" />
-    <Content Include="Views\Home\_AddComment.cshtml" />
-    <Content Include="Views\Home\_Poll.cshtml" />
-    <Content Include="Views\Home\_PollSection.cshtml" />
-    <Content Include="Views\Home\_CardHover.cshtml" />
-    <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Glight\_CommentSection.cshtml" />
+    <Content Include="Views\Glight\_AddComment.cshtml" />
+    <Content Include="Views\Glight\_Poll.cshtml" />
+    <Content Include="Views\Glight\_PollSection.cshtml" />
+    <Content Include="Views\Glight\_CardHover.cshtml" />
+    <Content Include="Views\Glight\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
